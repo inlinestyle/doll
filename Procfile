@@ -1,1 +1,1 @@
-web: lein run
+web: export PORT=80; lein run
