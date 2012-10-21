@@ -1,4 +1,4 @@
-# dollarsignunderscore
+# `$_`
 
 ClojureScript demo, backed by noir and THREE.js. 
 
