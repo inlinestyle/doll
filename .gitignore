@@ -1,5 +1,4 @@
 *.un~
-/resources/public/less/third-party/bootstrap/
 /target/
 /node_modules/
 pom.xml
