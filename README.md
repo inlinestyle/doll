@@ -1,6 +1,6 @@
 # `$_`
 
-ClojureScript demo, backed by noir and THREE.js. 
+[ClojureScript](https://github.com/clojure/clojurescript) demo, backed by [noir](http://webnoir.org/) and [three.js](http://mrdoob.github.com/three.js/). 
 
 
 ## License
