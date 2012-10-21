@@ -4,6 +4,7 @@
                            [dieter "0.2.0"]
                            [jayq "0.1.0-alpha4"]
                            [noir "1.3.0-beta3"]]
+            :min-lein-version "2.0.0"
             :plugins [[lein-cljsbuild "0.2.8"]]
             :cljsbuild
             {:builds
