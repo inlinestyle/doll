@@ -1,0 +1,58 @@
+@import '../third-party/bootstrap/mixins';
+
+@darkBlueGrey: #112;
+@lightBlueGrey: #445;
+@darkPink: #825;
+
+@mainColor: #EEE;
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    color: @mainColor;
+    #gradient.vertical(@darkBlueGrey, @lightBlueGrey)
+}
+
+.header {
+    font: 24px monaco;
+}
+
+.footer {
+    font: 14 px monaco;
+}
+
+.main {
+    .border-radius(20px);
+}
+
+.mainCanvas {
+    width: 100%;
+}
+
+a {
+    color: pink;
+    &:hover {
+        color: @darkPink;
+        text-decoration: none;
+    }
+}
+
+.pinkBorder {
+    border: 2px solid @darkPink;
+}
+
+.rightAlign {
+    text-align: right;
+}
+
+.darkPinkText {
+    color: @darkPink;
+}
+.cyanText {
+    color: cyan;
+}
+.yellowText {
+    color: #ef7;
+}
