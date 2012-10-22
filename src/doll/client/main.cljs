@@ -52,14 +52,15 @@
 
 (defn character-setup [view]
   (set-field view :character (render view {:xscale 200 :yscale 400 :zscale 200 :xpos 0 :ypos 100 :zpos 1000 :color 0x00dddd}))
-  (.add (get-field view :character) (get-field view :camera))
-  (on (get view :$el) :keydown (fn [event] 
-                                 (let [which (aget event "which")]
-                                   (cond
-                                     (= which (key-codes :a)) (.log js/console "a")
-                                     (= which (key-codes :w)) (.log js/console "w")
-                                     (= which (key-codes :s)) (.log js/console "s")
-                                     (= which (key-codes :d)) (.log js/console "d"))))) 
+  (let [character (get-field view :character)]
+    (.add character (get-field view :camera))
+    (on (get view :$el) :keydown (fn [event] 
+                                   (let [which (aget event "which")]
+                                     (cond
+                                       (= which (key-codes :a)) (.log js/console "a")
+                                       (= which (key-codes :w)) (.log js/console "w")
+                                       (= which (key-codes :s)) (.log js/console "s")
+                                       (= which (key-codes :d)) (.log js/console "d")))))) 
   view)
 
 (defn animate [view]
