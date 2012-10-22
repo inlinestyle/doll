@@ -13423,25 +13423,15 @@ doll.client.main = {};
 doll.client.main.document_ready = function(a) {
   return jayq.core.$.call(null, document).ready(a)
 };
+doll.client.main.key_codes = cljs.core.ObjMap.fromObject(["\ufdd0'a", "\ufdd0'w", "\ufdd0's", "\ufdd0'd"], {"\ufdd0'a":65, "\ufdd0'w":87, "\ufdd0's":83, "\ufdd0'd":68});
 doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":1E3, "\ufdd0'yscale":10, "\ufdd0'zscale":1E3, "\ufdd0'xpos":0, "\ufdd0'ypos":0, "\ufdd0'zpos":0, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":50, 
 "\ufdd0'zscale":200, "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-500, "\ufdd0'color":16711680}), cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":200, "\ufdd0'zscale":200, "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-700, "\ufdd0'color":255})], !0);
-doll.client.main.move_camera_dimension = function(a, b, c) {
-  return doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera").position[b] = c
-};
-doll.client.main.move_camera = function(a, b) {
-  var c = b.call(null, "\ufdd0'x");
-  cljs.core.truth_(c) && doll.client.main.move_camera_dimension.call(null, a, "x", c);
-  c = b.call(null, "\ufdd0'y");
-  cljs.core.truth_(c) && doll.client.main.move_camera_dimension.call(null, a, "y", c);
-  c = b.call(null, "\ufdd0'z");
-  cljs.core.truth_(c) && doll.client.main.move_camera_dimension.call(null, a, "z", c);
-  return a
-};
 doll.client.main.render = function(a, b) {
   var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'zpos", null), f = cljs.core._lookup.call(null, c, "\ufdd0'ypos", null), g = cljs.core._lookup.call(null, c, "\ufdd0'xpos", null), h = cljs.core._lookup.call(null, c, "\ufdd0'zscale", null), i = cljs.core._lookup.call(null, c, "\ufdd0'yscale", null), c = cljs.core._lookup.call(null, c, "\ufdd0'xscale", 
   null), h = new THREE.CubeGeometry(c, i, h), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'color", "\ufdd0'wireframe"], {"\ufdd0'color":d, "\ufdd0'wireframe":!0}))), d = new THREE.Mesh(h, d);
   d.position = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":g, "\ufdd0'y":f, "\ufdd0'z":e}));
-  return doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'scene").add(d)
+  doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'scene").add(d);
+  return d
 };
 doll.client.main.make_scenery = function(a, b) {
   return cljs.core.doall.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, doll.client.main.render, a), b))
@@ -13449,13 +13439,24 @@ doll.client.main.make_scenery = function(a, b) {
 doll.client.main.scene_setup = function(a) {
   var b = cljs.core._lookup.call(null, a, "\ufdd0'$el", null);
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'camera", new THREE.PerspectiveCamera(45, b.width() / b.height(), 1, 1E4));
-  doll.client.main.move_camera.call(null, a, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":0, "\ufdd0'y":100, "\ufdd0'z":1E3}));
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'scene", new THREE.Scene);
-  doll.client.main.make_scenery.call(null, a, doll.client.main.test_shapes);
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'controls", new THREE.TrackballControls(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"), cljs.core._lookup.call(null, a, "\ufdd0'$el", null).get(0)));
-  doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'controls").target.set(0, 0, -1);
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'renderer", new THREE.CanvasRenderer(jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'canvas"], {"\ufdd0'canvas":b.get(0)}))));
+  doll.client.main.make_scenery.call(null, a, doll.client.main.test_shapes);
+  doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'controls").target.set(0, 0, -1);
   doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'renderer").setSize(b.width(), b.height());
+  b.mouseenter(function() {
+    return b.focus()
+  });
+  return a
+};
+doll.client.main.character_setup = function(a) {
+  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":400, "\ufdd0'zscale":200, "\ufdd0'xpos":0, "\ufdd0'ypos":100, "\ufdd0'zpos":1E3, "\ufdd0'color":56797})));
+  doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character").add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
+  jayq.core.on.call(null, cljs.core._lookup.call(null, a, "\ufdd0'$el", null), "\ufdd0'keydown", function(a) {
+    a = a.which;
+    return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? console.log("a") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? console.log("w") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? console.log("s") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? console.log("d") : null
+  });
   return a
 };
 doll.client.main.animate = function animate(b) {
@@ -13467,5 +13468,5 @@ doll.client.main.animate = function animate(b) {
   return c.render(e, d)
 };
 doll.client.main.document_ready.call(null, function() {
-  return doll.client.main.animate.call(null, doll.client.main.scene_setup.call(null, new doll.client.lib.types.View(jayq.core.$.call(null, "\ufdd0'.mainCanvas"), cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY))))
+  return doll.client.main.animate.call(null, doll.client.main.character_setup.call(null, doll.client.main.scene_setup.call(null, new doll.client.lib.types.View(jayq.core.$.call(null, "\ufdd0'.mainCanvas"), cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY)))))
 });

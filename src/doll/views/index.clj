@@ -6,4 +6,5 @@
          (common/layout
            [:p.mbl "We're under construction right now, please come back later!"]
            [:div.pinkBorder
-            [:canvas.mainCanvas]]))
+            [:canvas.mainCanvas
+             {:tabindex "1"}]]))

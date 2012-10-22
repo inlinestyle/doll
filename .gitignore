@@ -1,6 +1,7 @@
 *.un~
 /target/
 /node_modules/
+*.swp
 pom.xml
 *jar
 /lib/

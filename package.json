@@ -1,0 +1,14 @@
+{
+    "name":"css-asset-builder",
+    "version":"0.1.0",
+    "engines":{
+        "node":">=0.6.0"
+    },
+    "dependencies":{
+        "grunt":"0.3.x",
+        "grunt-clean":"0.3.x",
+        "grunt-less":"0.1.6",
+        "grunt-css":"0.2.x",
+        "less":"1.3.0"
+    }
+}

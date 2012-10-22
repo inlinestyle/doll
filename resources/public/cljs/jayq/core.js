@@ -11,10 +11,10 @@ if(cljs.core.string_QMARK_.call(null,sel))
 {return sel;
 } else
 {if(cljs.core.fn_QMARK_.call(null,sel))
-{var temp__3971__auto____331370 = jayq.core.crate_meta.call(null,sel);
-if(cljs.core.truth_(temp__3971__auto____331370))
-{var cm__331371 = temp__3971__auto____331370;
-return [cljs.core.str("[crateGroup="),cljs.core.str(cm__331371),cljs.core.str("]")].join('');
+{var temp__3971__auto____39357 = jayq.core.crate_meta.call(null,sel);
+if(cljs.core.truth_(temp__3971__auto____39357))
+{var cm__39358 = temp__3971__auto____39357;
+return [cljs.core.str("[crateGroup="),cljs.core.str(cm__39358),cljs.core.str("]")].join('');
 } else
 {return sel;
 }
@@ -35,27 +35,27 @@ return [cljs.core.str("[crateGroup="),cljs.core.str(cm__331371),cljs.core.str("]
 * @param {...*} var_args
 */
 jayq.core.$ = (function() { 
-var $__delegate = function (sel,p__331372){
-var vec__331376__331377 = p__331372;
-var context__331378 = cljs.core.nth.call(null,vec__331376__331377,0,null);
-if(cljs.core.not.call(null,context__331378))
+var $__delegate = function (sel,p__39359){
+var vec__39363__39364 = p__39359;
+var context__39365 = cljs.core.nth.call(null,vec__39363__39364,0,null);
+if(cljs.core.not.call(null,context__39365))
 {return jQuery(jayq.core.__GT_selector.call(null,sel));
 } else
-{return jQuery(jayq.core.__GT_selector.call(null,sel),context__331378);
+{return jQuery(jayq.core.__GT_selector.call(null,sel),context__39365);
 }
 };
 var $ = function (sel,var_args){
-var p__331372 = null;
+var p__39359 = null;
 if (goog.isDef(var_args)) {
-  p__331372 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39359 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return $__delegate.call(this, sel, p__331372);
+return $__delegate.call(this, sel, p__39359);
 };
 $.cljs$lang$maxFixedArity = 1;
-$.cljs$lang$applyTo = (function (arglist__331379){
-var sel = cljs.core.first(arglist__331379);
-var p__331372 = cljs.core.rest(arglist__331379);
-return $__delegate(sel, p__331372);
+$.cljs$lang$applyTo = (function (arglist__39366){
+var sel = cljs.core.first(arglist__39366);
+var p__39359 = cljs.core.rest(arglist__39366);
+return $__delegate(sel, p__39359);
 });
 $.cljs$lang$arity$variadic = $__delegate;
 return $;
@@ -70,9 +70,9 @@ return cljs.core.ci_reduce.call(null,this$,f,start);
 });
 jQuery.prototype.cljs$core$ILookup$ = true;
 jQuery.prototype.cljs$core$ILookup$_lookup$arity$2 = (function (this$,k){
-var or__3824__auto____331380 = this$.slice(k,(k + 1));
-if(cljs.core.truth_(or__3824__auto____331380))
-{return or__3824__auto____331380;
+var or__3824__auto____39367 = this$.slice(k,(k + 1));
+if(cljs.core.truth_(or__3824__auto____39367))
+{return or__3824__auto____39367;
 } else
 {return null;
 }
@@ -124,23 +124,23 @@ if(cljs.core.truth_(this$.get(0)))
 }
 });
 jQuery.prototype.call = (function() {
-var G__331381 = null;
-var G__331381__2 = (function (_,k){
+var G__39368 = null;
+var G__39368__2 = (function (_,k){
 return cljs.core._lookup.call(null,this,k);
 });
-var G__331381__3 = (function (_,k,not_found){
+var G__39368__3 = (function (_,k,not_found){
 return cljs.core._lookup.call(null,this,k,not_found);
 });
-G__331381 = function(_,k,not_found){
+G__39368 = function(_,k,not_found){
 switch(arguments.length){
 case 2:
-return G__331381__2.call(this,_,k);
+return G__39368__2.call(this,_,k);
 case 3:
-return G__331381__3.call(this,_,k,not_found);
+return G__39368__3.call(this,_,k,not_found);
 }
 throw('Invalid arity: ' + arguments.length);
 };
-return G__331381;
+return G__39368;
 })()
 ;
 jayq.core.anim = (function anim(elem,props,dur){
@@ -160,29 +160,29 @@ if(cljs.core.keyword_QMARK_.call(null,opts))
 * @param {...*} var_args
 */
 jayq.core.attr = (function() { 
-var attr__delegate = function ($elem,a,p__331382){
-var vec__331387__331388 = p__331382;
-var v__331389 = cljs.core.nth.call(null,vec__331387__331388,0,null);
-var a__331390 = cljs.core.name.call(null,a);
-if(cljs.core.not.call(null,v__331389))
-{return $elem.attr(a__331390);
+var attr__delegate = function ($elem,a,p__39369){
+var vec__39374__39375 = p__39369;
+var v__39376 = cljs.core.nth.call(null,vec__39374__39375,0,null);
+var a__39377 = cljs.core.name.call(null,a);
+if(cljs.core.not.call(null,v__39376))
+{return $elem.attr(a__39377);
 } else
-{return $elem.attr(a__331390,v__331389);
+{return $elem.attr(a__39377,v__39376);
 }
 };
 var attr = function ($elem,a,var_args){
-var p__331382 = null;
+var p__39369 = null;
 if (goog.isDef(var_args)) {
-  p__331382 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39369 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return attr__delegate.call(this, $elem, a, p__331382);
+return attr__delegate.call(this, $elem, a, p__39369);
 };
 attr.cljs$lang$maxFixedArity = 2;
-attr.cljs$lang$applyTo = (function (arglist__331391){
-var $elem = cljs.core.first(arglist__331391);
-var a = cljs.core.first(cljs.core.next(arglist__331391));
-var p__331382 = cljs.core.rest(cljs.core.next(arglist__331391));
-return attr__delegate($elem, a, p__331382);
+attr.cljs$lang$applyTo = (function (arglist__39378){
+var $elem = cljs.core.first(arglist__39378);
+var a = cljs.core.first(cljs.core.next(arglist__39378));
+var p__39369 = cljs.core.rest(cljs.core.next(arglist__39378));
+return attr__delegate($elem, a, p__39369);
 });
 attr.cljs$lang$arity$variadic = attr__delegate;
 return attr;
@@ -195,29 +195,29 @@ return $elem.removeAttr(cljs.core.name.call(null,a));
 * @param {...*} var_args
 */
 jayq.core.data = (function() { 
-var data__delegate = function ($elem,k,p__331392){
-var vec__331397__331398 = p__331392;
-var v__331399 = cljs.core.nth.call(null,vec__331397__331398,0,null);
-var k__331400 = cljs.core.name.call(null,k);
-if(cljs.core.not.call(null,v__331399))
-{return $elem.data(k__331400);
+var data__delegate = function ($elem,k,p__39379){
+var vec__39384__39385 = p__39379;
+var v__39386 = cljs.core.nth.call(null,vec__39384__39385,0,null);
+var k__39387 = cljs.core.name.call(null,k);
+if(cljs.core.not.call(null,v__39386))
+{return $elem.data(k__39387);
 } else
-{return $elem.data(k__331400,v__331399);
+{return $elem.data(k__39387,v__39386);
 }
 };
 var data = function ($elem,k,var_args){
-var p__331392 = null;
+var p__39379 = null;
 if (goog.isDef(var_args)) {
-  p__331392 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39379 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return data__delegate.call(this, $elem, k, p__331392);
+return data__delegate.call(this, $elem, k, p__39379);
 };
 data.cljs$lang$maxFixedArity = 2;
-data.cljs$lang$applyTo = (function (arglist__331401){
-var $elem = cljs.core.first(arglist__331401);
-var k = cljs.core.first(cljs.core.next(arglist__331401));
-var p__331392 = cljs.core.rest(cljs.core.next(arglist__331401));
-return data__delegate($elem, k, p__331392);
+data.cljs$lang$applyTo = (function (arglist__39388){
+var $elem = cljs.core.first(arglist__39388);
+var k = cljs.core.first(cljs.core.next(arglist__39388));
+var p__39379 = cljs.core.rest(cljs.core.next(arglist__39388));
+return data__delegate($elem, k, p__39379);
 });
 data.cljs$lang$arity$variadic = data__delegate;
 return data;
@@ -227,20 +227,20 @@ jayq.core.position = (function position($elem){
 return cljs.core.js__GT_clj.call(null,$elem.position(),"\uFDD0'keywordize-keys",true);
 });
 jayq.core.add_class = (function add_class($elem,cl){
-var cl__331403 = cljs.core.name.call(null,cl);
-return $elem.addClass(cl__331403);
+var cl__39390 = cljs.core.name.call(null,cl);
+return $elem.addClass(cl__39390);
 });
 jayq.core.remove_class = (function remove_class($elem,cl){
-var cl__331405 = cljs.core.name.call(null,cl);
-return $elem.removeClass(cl__331405);
+var cl__39392 = cljs.core.name.call(null,cl);
+return $elem.removeClass(cl__39392);
 });
 jayq.core.toggle_class = (function toggle_class($elem,cl){
-var cl__331407 = cljs.core.name.call(null,cl);
-return $elem.toggleClass(cl__331407);
+var cl__39394 = cljs.core.name.call(null,cl);
+return $elem.toggleClass(cl__39394);
 });
 jayq.core.has_class = (function has_class($elem,cl){
-var cl__331409 = cljs.core.name.call(null,cl);
-return $elem.hasClass(cl__331409);
+var cl__39396 = cljs.core.name.call(null,cl);
+return $elem.hasClass(cl__39396);
 });
 jayq.core.after = (function after($elem,content){
 return $elem.after(content);
@@ -261,24 +261,24 @@ return $elem.remove();
 * @param {...*} var_args
 */
 jayq.core.hide = (function() { 
-var hide__delegate = function ($elem,p__331410){
-var vec__331415__331416 = p__331410;
-var speed__331417 = cljs.core.nth.call(null,vec__331415__331416,0,null);
-var on_finish__331418 = cljs.core.nth.call(null,vec__331415__331416,1,null);
-return $elem.hide(speed__331417,on_finish__331418);
+var hide__delegate = function ($elem,p__39397){
+var vec__39402__39403 = p__39397;
+var speed__39404 = cljs.core.nth.call(null,vec__39402__39403,0,null);
+var on_finish__39405 = cljs.core.nth.call(null,vec__39402__39403,1,null);
+return $elem.hide(speed__39404,on_finish__39405);
 };
 var hide = function ($elem,var_args){
-var p__331410 = null;
+var p__39397 = null;
 if (goog.isDef(var_args)) {
-  p__331410 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39397 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return hide__delegate.call(this, $elem, p__331410);
+return hide__delegate.call(this, $elem, p__39397);
 };
 hide.cljs$lang$maxFixedArity = 1;
-hide.cljs$lang$applyTo = (function (arglist__331419){
-var $elem = cljs.core.first(arglist__331419);
-var p__331410 = cljs.core.rest(arglist__331419);
-return hide__delegate($elem, p__331410);
+hide.cljs$lang$applyTo = (function (arglist__39406){
+var $elem = cljs.core.first(arglist__39406);
+var p__39397 = cljs.core.rest(arglist__39406);
+return hide__delegate($elem, p__39397);
 });
 hide.cljs$lang$arity$variadic = hide__delegate;
 return hide;
@@ -288,24 +288,24 @@ return hide;
 * @param {...*} var_args
 */
 jayq.core.show = (function() { 
-var show__delegate = function ($elem,p__331420){
-var vec__331425__331426 = p__331420;
-var speed__331427 = cljs.core.nth.call(null,vec__331425__331426,0,null);
-var on_finish__331428 = cljs.core.nth.call(null,vec__331425__331426,1,null);
-return $elem.show(speed__331427,on_finish__331428);
+var show__delegate = function ($elem,p__39407){
+var vec__39412__39413 = p__39407;
+var speed__39414 = cljs.core.nth.call(null,vec__39412__39413,0,null);
+var on_finish__39415 = cljs.core.nth.call(null,vec__39412__39413,1,null);
+return $elem.show(speed__39414,on_finish__39415);
 };
 var show = function ($elem,var_args){
-var p__331420 = null;
+var p__39407 = null;
 if (goog.isDef(var_args)) {
-  p__331420 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39407 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return show__delegate.call(this, $elem, p__331420);
+return show__delegate.call(this, $elem, p__39407);
 };
 show.cljs$lang$maxFixedArity = 1;
-show.cljs$lang$applyTo = (function (arglist__331429){
-var $elem = cljs.core.first(arglist__331429);
-var p__331420 = cljs.core.rest(arglist__331429);
-return show__delegate($elem, p__331420);
+show.cljs$lang$applyTo = (function (arglist__39416){
+var $elem = cljs.core.first(arglist__39416);
+var p__39407 = cljs.core.rest(arglist__39416);
+return show__delegate($elem, p__39407);
 });
 show.cljs$lang$arity$variadic = show__delegate;
 return show;
@@ -315,24 +315,24 @@ return show;
 * @param {...*} var_args
 */
 jayq.core.toggle = (function() { 
-var toggle__delegate = function ($elem,p__331430){
-var vec__331435__331436 = p__331430;
-var speed__331437 = cljs.core.nth.call(null,vec__331435__331436,0,null);
-var on_finish__331438 = cljs.core.nth.call(null,vec__331435__331436,1,null);
-return $elem.toggle(speed__331437,on_finish__331438);
+var toggle__delegate = function ($elem,p__39417){
+var vec__39422__39423 = p__39417;
+var speed__39424 = cljs.core.nth.call(null,vec__39422__39423,0,null);
+var on_finish__39425 = cljs.core.nth.call(null,vec__39422__39423,1,null);
+return $elem.toggle(speed__39424,on_finish__39425);
 };
 var toggle = function ($elem,var_args){
-var p__331430 = null;
+var p__39417 = null;
 if (goog.isDef(var_args)) {
-  p__331430 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39417 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return toggle__delegate.call(this, $elem, p__331430);
+return toggle__delegate.call(this, $elem, p__39417);
 };
 toggle.cljs$lang$maxFixedArity = 1;
-toggle.cljs$lang$applyTo = (function (arglist__331439){
-var $elem = cljs.core.first(arglist__331439);
-var p__331430 = cljs.core.rest(arglist__331439);
-return toggle__delegate($elem, p__331430);
+toggle.cljs$lang$applyTo = (function (arglist__39426){
+var $elem = cljs.core.first(arglist__39426);
+var p__39417 = cljs.core.rest(arglist__39426);
+return toggle__delegate($elem, p__39417);
 });
 toggle.cljs$lang$arity$variadic = toggle__delegate;
 return toggle;
@@ -342,24 +342,24 @@ return toggle;
 * @param {...*} var_args
 */
 jayq.core.fade_out = (function() { 
-var fade_out__delegate = function ($elem,p__331440){
-var vec__331445__331446 = p__331440;
-var speed__331447 = cljs.core.nth.call(null,vec__331445__331446,0,null);
-var on_finish__331448 = cljs.core.nth.call(null,vec__331445__331446,1,null);
-return $elem.fadeOut(speed__331447,on_finish__331448);
+var fade_out__delegate = function ($elem,p__39427){
+var vec__39432__39433 = p__39427;
+var speed__39434 = cljs.core.nth.call(null,vec__39432__39433,0,null);
+var on_finish__39435 = cljs.core.nth.call(null,vec__39432__39433,1,null);
+return $elem.fadeOut(speed__39434,on_finish__39435);
 };
 var fade_out = function ($elem,var_args){
-var p__331440 = null;
+var p__39427 = null;
 if (goog.isDef(var_args)) {
-  p__331440 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39427 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return fade_out__delegate.call(this, $elem, p__331440);
+return fade_out__delegate.call(this, $elem, p__39427);
 };
 fade_out.cljs$lang$maxFixedArity = 1;
-fade_out.cljs$lang$applyTo = (function (arglist__331449){
-var $elem = cljs.core.first(arglist__331449);
-var p__331440 = cljs.core.rest(arglist__331449);
-return fade_out__delegate($elem, p__331440);
+fade_out.cljs$lang$applyTo = (function (arglist__39436){
+var $elem = cljs.core.first(arglist__39436);
+var p__39427 = cljs.core.rest(arglist__39436);
+return fade_out__delegate($elem, p__39427);
 });
 fade_out.cljs$lang$arity$variadic = fade_out__delegate;
 return fade_out;
@@ -369,24 +369,24 @@ return fade_out;
 * @param {...*} var_args
 */
 jayq.core.fade_in = (function() { 
-var fade_in__delegate = function ($elem,p__331450){
-var vec__331455__331456 = p__331450;
-var speed__331457 = cljs.core.nth.call(null,vec__331455__331456,0,null);
-var on_finish__331458 = cljs.core.nth.call(null,vec__331455__331456,1,null);
-return $elem.fadeIn(speed__331457,on_finish__331458);
+var fade_in__delegate = function ($elem,p__39437){
+var vec__39442__39443 = p__39437;
+var speed__39444 = cljs.core.nth.call(null,vec__39442__39443,0,null);
+var on_finish__39445 = cljs.core.nth.call(null,vec__39442__39443,1,null);
+return $elem.fadeIn(speed__39444,on_finish__39445);
 };
 var fade_in = function ($elem,var_args){
-var p__331450 = null;
+var p__39437 = null;
 if (goog.isDef(var_args)) {
-  p__331450 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39437 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return fade_in__delegate.call(this, $elem, p__331450);
+return fade_in__delegate.call(this, $elem, p__39437);
 };
 fade_in.cljs$lang$maxFixedArity = 1;
-fade_in.cljs$lang$applyTo = (function (arglist__331459){
-var $elem = cljs.core.first(arglist__331459);
-var p__331450 = cljs.core.rest(arglist__331459);
-return fade_in__delegate($elem, p__331450);
+fade_in.cljs$lang$applyTo = (function (arglist__39446){
+var $elem = cljs.core.first(arglist__39446);
+var p__39437 = cljs.core.rest(arglist__39446);
+return fade_in__delegate($elem, p__39437);
 });
 fade_in.cljs$lang$arity$variadic = fade_in__delegate;
 return fade_in;
@@ -396,24 +396,24 @@ return fade_in;
 * @param {...*} var_args
 */
 jayq.core.slide_up = (function() { 
-var slide_up__delegate = function ($elem,p__331460){
-var vec__331465__331466 = p__331460;
-var speed__331467 = cljs.core.nth.call(null,vec__331465__331466,0,null);
-var on_finish__331468 = cljs.core.nth.call(null,vec__331465__331466,1,null);
-return $elem.slideUp(speed__331467,on_finish__331468);
+var slide_up__delegate = function ($elem,p__39447){
+var vec__39452__39453 = p__39447;
+var speed__39454 = cljs.core.nth.call(null,vec__39452__39453,0,null);
+var on_finish__39455 = cljs.core.nth.call(null,vec__39452__39453,1,null);
+return $elem.slideUp(speed__39454,on_finish__39455);
 };
 var slide_up = function ($elem,var_args){
-var p__331460 = null;
+var p__39447 = null;
 if (goog.isDef(var_args)) {
-  p__331460 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39447 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return slide_up__delegate.call(this, $elem, p__331460);
+return slide_up__delegate.call(this, $elem, p__39447);
 };
 slide_up.cljs$lang$maxFixedArity = 1;
-slide_up.cljs$lang$applyTo = (function (arglist__331469){
-var $elem = cljs.core.first(arglist__331469);
-var p__331460 = cljs.core.rest(arglist__331469);
-return slide_up__delegate($elem, p__331460);
+slide_up.cljs$lang$applyTo = (function (arglist__39456){
+var $elem = cljs.core.first(arglist__39456);
+var p__39447 = cljs.core.rest(arglist__39456);
+return slide_up__delegate($elem, p__39447);
 });
 slide_up.cljs$lang$arity$variadic = slide_up__delegate;
 return slide_up;
@@ -423,24 +423,24 @@ return slide_up;
 * @param {...*} var_args
 */
 jayq.core.slide_down = (function() { 
-var slide_down__delegate = function ($elem,p__331470){
-var vec__331475__331476 = p__331470;
-var speed__331477 = cljs.core.nth.call(null,vec__331475__331476,0,null);
-var on_finish__331478 = cljs.core.nth.call(null,vec__331475__331476,1,null);
-return $elem.slideDown(speed__331477,on_finish__331478);
+var slide_down__delegate = function ($elem,p__39457){
+var vec__39462__39463 = p__39457;
+var speed__39464 = cljs.core.nth.call(null,vec__39462__39463,0,null);
+var on_finish__39465 = cljs.core.nth.call(null,vec__39462__39463,1,null);
+return $elem.slideDown(speed__39464,on_finish__39465);
 };
 var slide_down = function ($elem,var_args){
-var p__331470 = null;
+var p__39457 = null;
 if (goog.isDef(var_args)) {
-  p__331470 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39457 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return slide_down__delegate.call(this, $elem, p__331470);
+return slide_down__delegate.call(this, $elem, p__39457);
 };
 slide_down.cljs$lang$maxFixedArity = 1;
-slide_down.cljs$lang$applyTo = (function (arglist__331479){
-var $elem = cljs.core.first(arglist__331479);
-var p__331470 = cljs.core.rest(arglist__331479);
-return slide_down__delegate($elem, p__331470);
+slide_down.cljs$lang$applyTo = (function (arglist__39466){
+var $elem = cljs.core.first(arglist__39466);
+var p__39457 = cljs.core.rest(arglist__39466);
+return slide_down__delegate($elem, p__39457);
 });
 slide_down.cljs$lang$arity$variadic = slide_down__delegate;
 return slide_down;
@@ -456,24 +456,24 @@ return $elem.find(cljs.core.name.call(null,selector));
 * @param {...*} var_args
 */
 jayq.core.closest = (function() { 
-var closest__delegate = function ($elem,selector,p__331480){
-var vec__331484__331485 = p__331480;
-var context__331486 = cljs.core.nth.call(null,vec__331484__331485,0,null);
-return $elem.closest(selector,context__331486);
+var closest__delegate = function ($elem,selector,p__39467){
+var vec__39471__39472 = p__39467;
+var context__39473 = cljs.core.nth.call(null,vec__39471__39472,0,null);
+return $elem.closest(selector,context__39473);
 };
 var closest = function ($elem,selector,var_args){
-var p__331480 = null;
+var p__39467 = null;
 if (goog.isDef(var_args)) {
-  p__331480 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39467 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return closest__delegate.call(this, $elem, selector, p__331480);
+return closest__delegate.call(this, $elem, selector, p__39467);
 };
 closest.cljs$lang$maxFixedArity = 2;
-closest.cljs$lang$applyTo = (function (arglist__331487){
-var $elem = cljs.core.first(arglist__331487);
-var selector = cljs.core.first(cljs.core.next(arglist__331487));
-var p__331480 = cljs.core.rest(cljs.core.next(arglist__331487));
-return closest__delegate($elem, selector, p__331480);
+closest.cljs$lang$applyTo = (function (arglist__39474){
+var $elem = cljs.core.first(arglist__39474);
+var selector = cljs.core.first(cljs.core.next(arglist__39474));
+var p__39467 = cljs.core.rest(cljs.core.next(arglist__39474));
+return closest__delegate($elem, selector, p__39467);
 });
 closest.cljs$lang$arity$variadic = closest__delegate;
 return closest;
@@ -492,27 +492,27 @@ return $elem.empty();
 * @param {...*} var_args
 */
 jayq.core.val = (function() { 
-var val__delegate = function ($elem,p__331488){
-var vec__331492__331493 = p__331488;
-var v__331494 = cljs.core.nth.call(null,vec__331492__331493,0,null);
-if(cljs.core.truth_(v__331494))
-{return $elem.val(v__331494);
+var val__delegate = function ($elem,p__39475){
+var vec__39479__39480 = p__39475;
+var v__39481 = cljs.core.nth.call(null,vec__39479__39480,0,null);
+if(cljs.core.truth_(v__39481))
+{return $elem.val(v__39481);
 } else
 {return $elem.val();
 }
 };
 var val = function ($elem,var_args){
-var p__331488 = null;
+var p__39475 = null;
 if (goog.isDef(var_args)) {
-  p__331488 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
+  p__39475 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 1),0);
 } 
-return val__delegate.call(this, $elem, p__331488);
+return val__delegate.call(this, $elem, p__39475);
 };
 val.cljs$lang$maxFixedArity = 1;
-val.cljs$lang$applyTo = (function (arglist__331495){
-var $elem = cljs.core.first(arglist__331495);
-var p__331488 = cljs.core.rest(arglist__331495);
-return val__delegate($elem, p__331488);
+val.cljs$lang$applyTo = (function (arglist__39482){
+var $elem = cljs.core.first(arglist__39482);
+var p__39475 = cljs.core.rest(arglist__39482);
+return val__delegate($elem, p__39475);
 });
 val.cljs$lang$arity$variadic = val__delegate;
 return val;
@@ -530,12 +530,12 @@ return jayq.core.$.call(null,elem).dequeue();
 jayq.core.document_ready = (function document_ready(func){
 return jayq.core.$.call(null,document).ready(func);
 });
-jayq.core.xhr = (function xhr(p__331496,content,callback){
-var vec__331502__331503 = p__331496;
-var method__331504 = cljs.core.nth.call(null,vec__331502__331503,0,null);
-var uri__331505 = cljs.core.nth.call(null,vec__331502__331503,1,null);
-var params__331506 = jayq.util.clj__GT_js.call(null,cljs.core.ObjMap.fromObject(["\uFDD0'type","\uFDD0'data","\uFDD0'success"],{"\uFDD0'type":clojure.string.upper_case.call(null,cljs.core.name.call(null,method__331504)),"\uFDD0'data":jayq.util.clj__GT_js.call(null,content),"\uFDD0'success":callback}));
-return jQuery.ajax(uri__331505,params__331506);
+jayq.core.xhr = (function xhr(p__39483,content,callback){
+var vec__39489__39490 = p__39483;
+var method__39491 = cljs.core.nth.call(null,vec__39489__39490,0,null);
+var uri__39492 = cljs.core.nth.call(null,vec__39489__39490,1,null);
+var params__39493 = jayq.util.clj__GT_js.call(null,cljs.core.ObjMap.fromObject(["\uFDD0'type","\uFDD0'data","\uFDD0'success"],{"\uFDD0'type":clojure.string.upper_case.call(null,cljs.core.name.call(null,method__39491)),"\uFDD0'data":jayq.util.clj__GT_js.call(null,content),"\uFDD0'success":callback}));
+return jQuery.ajax(uri__39492,params__39493);
 });
 jayq.core.ajax = (function() {
 var ajax = null;
@@ -566,24 +566,24 @@ return $elem.bind(cljs.core.name.call(null,ev),func);
 * @param {...*} var_args
 */
 jayq.core.unbind = (function() { 
-var unbind__delegate = function ($elem,ev,p__331507){
-var vec__331511__331512 = p__331507;
-var func__331513 = cljs.core.nth.call(null,vec__331511__331512,0,null);
-return $elem.unbind(cljs.core.name.call(null,ev),func__331513);
+var unbind__delegate = function ($elem,ev,p__39494){
+var vec__39498__39499 = p__39494;
+var func__39500 = cljs.core.nth.call(null,vec__39498__39499,0,null);
+return $elem.unbind(cljs.core.name.call(null,ev),func__39500);
 };
 var unbind = function ($elem,ev,var_args){
-var p__331507 = null;
+var p__39494 = null;
 if (goog.isDef(var_args)) {
-  p__331507 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39494 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return unbind__delegate.call(this, $elem, ev, p__331507);
+return unbind__delegate.call(this, $elem, ev, p__39494);
 };
 unbind.cljs$lang$maxFixedArity = 2;
-unbind.cljs$lang$applyTo = (function (arglist__331514){
-var $elem = cljs.core.first(arglist__331514);
-var ev = cljs.core.first(cljs.core.next(arglist__331514));
-var p__331507 = cljs.core.rest(cljs.core.next(arglist__331514));
-return unbind__delegate($elem, ev, p__331507);
+unbind.cljs$lang$applyTo = (function (arglist__39501){
+var $elem = cljs.core.first(arglist__39501);
+var ev = cljs.core.first(cljs.core.next(arglist__39501));
+var p__39494 = cljs.core.rest(cljs.core.next(arglist__39501));
+return unbind__delegate($elem, ev, p__39494);
 });
 unbind.cljs$lang$arity$variadic = unbind__delegate;
 return unbind;
@@ -618,26 +618,26 @@ if(cljs.core.keyword_QMARK_.call(null,e))
 * @param {...*} var_args
 */
 jayq.core.on = (function() { 
-var on__delegate = function ($elem,events,p__331515){
-var vec__331521__331522 = p__331515;
-var sel__331523 = cljs.core.nth.call(null,vec__331521__331522,0,null);
-var data__331524 = cljs.core.nth.call(null,vec__331521__331522,1,null);
-var handler__331525 = cljs.core.nth.call(null,vec__331521__331522,2,null);
-return $elem.on(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__331523),data__331524,handler__331525);
+var on__delegate = function ($elem,events,p__39502){
+var vec__39508__39509 = p__39502;
+var sel__39510 = cljs.core.nth.call(null,vec__39508__39509,0,null);
+var data__39511 = cljs.core.nth.call(null,vec__39508__39509,1,null);
+var handler__39512 = cljs.core.nth.call(null,vec__39508__39509,2,null);
+return $elem.on(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__39510),data__39511,handler__39512);
 };
 var on = function ($elem,events,var_args){
-var p__331515 = null;
+var p__39502 = null;
 if (goog.isDef(var_args)) {
-  p__331515 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39502 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return on__delegate.call(this, $elem, events, p__331515);
+return on__delegate.call(this, $elem, events, p__39502);
 };
 on.cljs$lang$maxFixedArity = 2;
-on.cljs$lang$applyTo = (function (arglist__331526){
-var $elem = cljs.core.first(arglist__331526);
-var events = cljs.core.first(cljs.core.next(arglist__331526));
-var p__331515 = cljs.core.rest(cljs.core.next(arglist__331526));
-return on__delegate($elem, events, p__331515);
+on.cljs$lang$applyTo = (function (arglist__39513){
+var $elem = cljs.core.first(arglist__39513);
+var events = cljs.core.first(cljs.core.next(arglist__39513));
+var p__39502 = cljs.core.rest(cljs.core.next(arglist__39513));
+return on__delegate($elem, events, p__39502);
 });
 on.cljs$lang$arity$variadic = on__delegate;
 return on;
@@ -647,26 +647,26 @@ return on;
 * @param {...*} var_args
 */
 jayq.core.one = (function() { 
-var one__delegate = function ($elem,events,p__331527){
-var vec__331533__331534 = p__331527;
-var sel__331535 = cljs.core.nth.call(null,vec__331533__331534,0,null);
-var data__331536 = cljs.core.nth.call(null,vec__331533__331534,1,null);
-var handler__331537 = cljs.core.nth.call(null,vec__331533__331534,2,null);
-return $elem.one(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__331535),data__331536,handler__331537);
+var one__delegate = function ($elem,events,p__39514){
+var vec__39520__39521 = p__39514;
+var sel__39522 = cljs.core.nth.call(null,vec__39520__39521,0,null);
+var data__39523 = cljs.core.nth.call(null,vec__39520__39521,1,null);
+var handler__39524 = cljs.core.nth.call(null,vec__39520__39521,2,null);
+return $elem.one(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__39522),data__39523,handler__39524);
 };
 var one = function ($elem,events,var_args){
-var p__331527 = null;
+var p__39514 = null;
 if (goog.isDef(var_args)) {
-  p__331527 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39514 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return one__delegate.call(this, $elem, events, p__331527);
+return one__delegate.call(this, $elem, events, p__39514);
 };
 one.cljs$lang$maxFixedArity = 2;
-one.cljs$lang$applyTo = (function (arglist__331538){
-var $elem = cljs.core.first(arglist__331538);
-var events = cljs.core.first(cljs.core.next(arglist__331538));
-var p__331527 = cljs.core.rest(cljs.core.next(arglist__331538));
-return one__delegate($elem, events, p__331527);
+one.cljs$lang$applyTo = (function (arglist__39525){
+var $elem = cljs.core.first(arglist__39525);
+var events = cljs.core.first(cljs.core.next(arglist__39525));
+var p__39514 = cljs.core.rest(cljs.core.next(arglist__39525));
+return one__delegate($elem, events, p__39514);
 });
 one.cljs$lang$arity$variadic = one__delegate;
 return one;
@@ -676,25 +676,25 @@ return one;
 * @param {...*} var_args
 */
 jayq.core.off = (function() { 
-var off__delegate = function ($elem,events,p__331539){
-var vec__331544__331545 = p__331539;
-var sel__331546 = cljs.core.nth.call(null,vec__331544__331545,0,null);
-var handler__331547 = cljs.core.nth.call(null,vec__331544__331545,1,null);
-return $elem.off(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__331546),handler__331547);
+var off__delegate = function ($elem,events,p__39526){
+var vec__39531__39532 = p__39526;
+var sel__39533 = cljs.core.nth.call(null,vec__39531__39532,0,null);
+var handler__39534 = cljs.core.nth.call(null,vec__39531__39532,1,null);
+return $elem.off(jayq.core.__GT_event.call(null,events),jayq.core.__GT_selector.call(null,sel__39533),handler__39534);
 };
 var off = function ($elem,events,var_args){
-var p__331539 = null;
+var p__39526 = null;
 if (goog.isDef(var_args)) {
-  p__331539 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
+  p__39526 = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2),0);
 } 
-return off__delegate.call(this, $elem, events, p__331539);
+return off__delegate.call(this, $elem, events, p__39526);
 };
 off.cljs$lang$maxFixedArity = 2;
-off.cljs$lang$applyTo = (function (arglist__331548){
-var $elem = cljs.core.first(arglist__331548);
-var events = cljs.core.first(cljs.core.next(arglist__331548));
-var p__331539 = cljs.core.rest(cljs.core.next(arglist__331548));
-return off__delegate($elem, events, p__331539);
+off.cljs$lang$applyTo = (function (arglist__39535){
+var $elem = cljs.core.first(arglist__39535);
+var events = cljs.core.first(cljs.core.next(arglist__39535));
+var p__39526 = cljs.core.rest(cljs.core.next(arglist__39535));
+return off__delegate($elem, events, p__39526);
 });
 off.cljs$lang$arity$variadic = off__delegate;
 return off;
