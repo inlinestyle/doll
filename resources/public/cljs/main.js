@@ -376,6 +376,15 @@ goog.base = function(a, b, c) {
 goog.scope = function(a) {
   a.call(goog.global)
 };
+goog.debug = {};
+goog.debug.Error = function(a) {
+  this.stack = Error().stack || "";
+  if(a) {
+    this.message = "" + a
+  }
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.string = {};
 goog.string.Unicode = {NBSP:"\u00a0"};
 goog.string.startsWith = function(a, b) {
@@ -701,15 +710,6 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(a) {
   return goog.string.toSelectorCaseCache_[a] || (goog.string.toSelectorCaseCache_[a] = ("" + a).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
-goog.debug = {};
-goog.debug.Error = function(a) {
-  this.stack = Error().stack || "";
-  if(a) {
-    this.message = "" + a
-  }
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.asserts = {};
 goog.asserts.ENABLE_ASSERTS = goog.DEBUG;
 goog.asserts.AssertionError = function(a, b) {
@@ -12638,6 +12638,17 @@ doll.client.lib.protocols.set_field = function(a, b, c) {
   }
   return d.call(null, a, b, c)
 };
+doll.client.lib.protocols.set_fields = function(a, b) {
+  if(a ? a.doll$client$lib$protocols$State$set_fields$arity$2 : a) {
+    return a.doll$client$lib$protocols$State$set_fields$arity$2(a, b)
+  }
+  var c;
+  c = doll.client.lib.protocols.set_fields[goog.typeOf(null == a ? null : a)];
+  if(!c && (c = doll.client.lib.protocols.set_fields._, !c)) {
+    throw cljs.core.missing_protocol.call(null, "State.set-fields", a);
+  }
+  return c.call(null, a, b)
+};
 doll.client.lib.protocols.get_field = function(a, b) {
   if(a ? a.doll$client$lib$protocols$State$get_field$arity$2 : a) {
     return a.doll$client$lib$protocols$State$get_field$arity$2(a, b)
@@ -12648,6 +12659,40 @@ doll.client.lib.protocols.get_field = function(a, b) {
     throw cljs.core.missing_protocol.call(null, "State.get-field", a);
   }
   return c.call(null, a, b)
+};
+doll.client.lib.protocols.get_fields = function(a, b) {
+  if(a ? a.doll$client$lib$protocols$State$get_fields$arity$2 : a) {
+    return a.doll$client$lib$protocols$State$get_fields$arity$2(a, b)
+  }
+  var c;
+  c = doll.client.lib.protocols.get_fields[goog.typeOf(null == a ? null : a)];
+  if(!c && (c = doll.client.lib.protocols.get_fields._, !c)) {
+    throw cljs.core.missing_protocol.call(null, "State.get-fields", a);
+  }
+  return c.call(null, a, b)
+};
+doll.client.lib.protocols.update_field = function(a, b, c) {
+  if(a ? a.doll$client$lib$protocols$State$update_field$arity$3 : a) {
+    return a.doll$client$lib$protocols$State$update_field$arity$3(a, b, c)
+  }
+  var d;
+  d = doll.client.lib.protocols.update_field[goog.typeOf(null == a ? null : a)];
+  if(!d && (d = doll.client.lib.protocols.update_field._, !d)) {
+    throw cljs.core.missing_protocol.call(null, "State.update-field", a);
+  }
+  return d.call(null, a, b, c)
+};
+doll.client.lib.protocols.Shape = {};
+doll.client.lib.protocols.draw = function(a) {
+  if(a ? a.doll$client$lib$protocols$Shape$draw$arity$1 : a) {
+    return a.doll$client$lib$protocols$Shape$draw$arity$1(a)
+  }
+  var b;
+  b = doll.client.lib.protocols.draw[goog.typeOf(null == a ? null : a)];
+  if(!b && (b = doll.client.lib.protocols.draw._, !b)) {
+    throw cljs.core.missing_protocol.call(null, "Shape.draw", a);
+  }
+  return b.call(null, a)
 };
 doll.client.lib.types = {};
 doll.client.lib.types.Model = function(a, b, c) {
@@ -12675,8 +12720,19 @@ doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$ = !0;
 doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$set_field$arity$3 = function(a, b, c) {
   return cljs.core.swap_BANG_.call(null, this.field_atom, cljs.core.assoc, b, c)
 };
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$set_fields$arity$2 = function(a, b) {
+  return cljs.core.swap_BANG_.call(null, this.field_atom, function(a) {
+    return cljs.core.apply.call(null, cljs.core.assoc, a, b)
+  })
+};
 doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$get_field$arity$2 = function(a, b) {
   return cljs.core.deref.call(null, this.field_atom).call(null, b)
+};
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$get_fields$arity$2 = function(a, b) {
+  return cljs.core.select_keys.call(null, cljs.core.deref.call(null, this.field_atom), b)
+};
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$State$update_field$arity$3 = function(a, b, c) {
+  return cljs.core.swap_BANG_.call(null, this.field_atom, cljs.core.update_in, cljs.core.PersistentVector.fromArray([b], !0), c)
 };
 doll.client.lib.types.Model.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
   return cljs.core.pr_sequential_writer.call(null, b, function(a) {
@@ -12728,14 +12784,15 @@ doll.client.lib.types.__GT_Model = function(a) {
 doll.client.lib.types.map__GT_Model = function(a) {
   return new doll.client.lib.types.Model((new cljs.core.Keyword("\ufdd0'field-atom")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'field-atom"))
 };
-doll.client.lib.types.View = function(a, b, c, d) {
+doll.client.lib.types.View = function(a, b, c, d, e) {
   this.$el = a;
-  this.options_atom = b;
-  this.__meta = c;
-  this.__extmap = d;
+  this.model = b;
+  this.options_atom = c;
+  this.__meta = d;
+  this.__extmap = e;
   this.cljs$lang$protocol_mask$partition1$ = 0;
   this.cljs$lang$protocol_mask$partition0$ = 2766538506;
-  2 < arguments.length ? (this.__meta = c, this.__extmap = d) : this.__extmap = this.__meta = null
+  3 < arguments.length ? (this.__meta = d, this.__extmap = e) : this.__extmap = this.__meta = null
 };
 doll.client.lib.types.View.prototype.cljs$core$IHash$_hash$arity$1 = function(a) {
   var b = this.__hash;
@@ -12745,11 +12802,12 @@ doll.client.lib.types.View.prototype.cljs$core$ILookup$_lookup$arity$2 = functio
   return a.cljs$core$ILookup$_lookup$arity$3(a, b, null)
 };
 doll.client.lib.types.View.prototype.cljs$core$ILookup$_lookup$arity$3 = function(a, b, c) {
-  return"\ufdd0'$el" === b ? this.$el : "\ufdd0'options-atom" === b ? this.options_atom : cljs.core._lookup.call(null, this.__extmap, b, c)
+  return"\ufdd0'$el" === b ? this.$el : "\ufdd0'model" === b ? this.model : "\ufdd0'options-atom" === b ? this.options_atom : cljs.core._lookup.call(null, this.__extmap, b, c)
 };
 doll.client.lib.types.View.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(a, b, c) {
   a = cljs.core.identical_QMARK_;
-  return a.call(null, "\ufdd0'$el", b) ? new doll.client.lib.types.View(c, this.options_atom, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'options-atom", b) ? new doll.client.lib.types.View(this.$el, c, this.__meta, this.__extmap, null) : new doll.client.lib.types.View(this.$el, this.options_atom, this.__meta, cljs.core.assoc.call(null, this.__extmap, b, c), null)
+  return a.call(null, "\ufdd0'$el", b) ? new doll.client.lib.types.View(c, this.model, this.options_atom, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'model", b) ? new doll.client.lib.types.View(this.$el, c, this.options_atom, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'options-atom", b) ? new doll.client.lib.types.View(this.$el, this.model, c, this.__meta, this.__extmap, null) : new doll.client.lib.types.View(this.$el, this.model, this.options_atom, this.__meta, cljs.core.assoc.call(null, 
+  this.__extmap, b, c), null)
 };
 doll.client.lib.types.View.prototype.doll$client$lib$protocols$State$ = !0;
 doll.client.lib.types.View.prototype.doll$client$lib$protocols$State$set_field$arity$3 = function(a, b, c) {
@@ -12761,21 +12819,21 @@ doll.client.lib.types.View.prototype.doll$client$lib$protocols$State$get_field$a
 doll.client.lib.types.View.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
   return cljs.core.pr_sequential_writer.call(null, b, function(a) {
     return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
-  }, [cljs.core.str("#"), cljs.core.str("View"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
+  }, [cljs.core.str("#"), cljs.core.str("View"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'model", this.model), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
 };
 doll.client.lib.types.View.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
   return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
 };
 doll.client.lib.types.View.prototype.cljs$core$ISeqable$_seq$arity$1 = function() {
-  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
+  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'model", this.model), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
 };
 doll.client.lib.types.View.prototype.cljs$core$IPrintable$_pr_seq$arity$2 = function(a, b) {
   return cljs.core.pr_sequential.call(null, function(a) {
     return cljs.core.pr_sequential.call(null, cljs.core.pr_seq, "", " ", "", b, a)
-  }, [cljs.core.str("#"), cljs.core.str("doll.client.lib.types.View"), cljs.core.str("{")].join(""), ", ", "}", b, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
+  }, [cljs.core.str("#"), cljs.core.str("doll.client.lib.types.View"), cljs.core.str("{")].join(""), ", ", "}", b, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'$el", this.$el), cljs.core.vector.call(null, "\ufdd0'model", this.model), cljs.core.vector.call(null, "\ufdd0'options-atom", this.options_atom)], !0), this.__extmap))
 };
 doll.client.lib.types.View.prototype.cljs$core$ICounted$_count$arity$1 = function() {
-  return 2 + cljs.core.count.call(null, this.__extmap)
+  return 3 + cljs.core.count.call(null, this.__extmap)
 };
 doll.client.lib.types.View.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(a, b) {
   return cljs.core.truth_(function() {
@@ -12787,13 +12845,13 @@ doll.client.lib.types.View.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(
   }()) ? !0 : !1
 };
 doll.client.lib.types.View.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
-  return new doll.client.lib.types.View(this.$el, this.options_atom, b, this.__extmap, this.__hash)
+  return new doll.client.lib.types.View(this.$el, this.model, this.options_atom, b, this.__extmap, this.__hash)
 };
 doll.client.lib.types.View.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
   return this.__meta
 };
 doll.client.lib.types.View.prototype.cljs$core$IMap$_dissoc$arity$2 = function(a, b) {
-  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'$el", "\ufdd0'options-atom"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new doll.client.lib.types.View(this.$el, this.options_atom, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
+  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'model", "\ufdd0'$el", "\ufdd0'options-atom"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new doll.client.lib.types.View(this.$el, this.model, this.options_atom, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
 };
 doll.client.lib.types.View.cljs$lang$type = !0;
 doll.client.lib.types.View.cljs$lang$ctorPrSeq = function() {
@@ -12802,11 +12860,170 @@ doll.client.lib.types.View.cljs$lang$ctorPrSeq = function() {
 doll.client.lib.types.View.cljs$lang$ctorPrWriter = function(a, b) {
   return cljs.core._write.call(null, b, "doll.client.lib.types/View")
 };
-doll.client.lib.types.__GT_View = function(a, b) {
-  return new doll.client.lib.types.View(a, b)
+doll.client.lib.types.__GT_View = function(a, b, c) {
+  return new doll.client.lib.types.View(a, b, c)
 };
 doll.client.lib.types.map__GT_View = function(a) {
-  return new doll.client.lib.types.View((new cljs.core.Keyword("\ufdd0'$el")).call(null, a), (new cljs.core.Keyword("\ufdd0'options-atom")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'$el", "\ufdd0'options-atom"))
+  return new doll.client.lib.types.View((new cljs.core.Keyword("\ufdd0'$el")).call(null, a), (new cljs.core.Keyword("\ufdd0'model")).call(null, a), (new cljs.core.Keyword("\ufdd0'options-atom")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'$el", "\ufdd0'model", "\ufdd0'options-atom"))
+};
+doll.client.lib.types.Cube = function(a, b, c, d, e) {
+  this.xscale = a;
+  this.yscale = b;
+  this.zscale = c;
+  this.__meta = d;
+  this.__extmap = e;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2766538506;
+  3 < arguments.length ? (this.__meta = d, this.__extmap = e) : this.__extmap = this.__meta = null
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IHash$_hash$arity$1 = function(a) {
+  var b = this.__hash;
+  return null != b ? b : this.__hash = a = cljs.core.hash_imap.call(null, a)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$ILookup$_lookup$arity$2 = function(a, b) {
+  return a.cljs$core$ILookup$_lookup$arity$3(a, b, null)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$ILookup$_lookup$arity$3 = function(a, b, c) {
+  return"\ufdd0'xscale" === b ? this.xscale : "\ufdd0'yscale" === b ? this.yscale : "\ufdd0'zscale" === b ? this.zscale : cljs.core._lookup.call(null, this.__extmap, b, c)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(a, b, c) {
+  a = cljs.core.identical_QMARK_;
+  return a.call(null, "\ufdd0'xscale", b) ? new doll.client.lib.types.Cube(c, this.yscale, this.zscale, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'yscale", b) ? new doll.client.lib.types.Cube(this.xscale, c, this.zscale, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'zscale", b) ? new doll.client.lib.types.Cube(this.xscale, this.yscale, c, this.__meta, this.__extmap, null) : new doll.client.lib.types.Cube(this.xscale, this.yscale, this.zscale, this.__meta, cljs.core.assoc.call(null, 
+  this.__extmap, b, c), null)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
+  return cljs.core.pr_sequential_writer.call(null, b, function(a) {
+    return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
+  }, [cljs.core.str("#"), cljs.core.str("Cube"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'yscale", this.yscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale)], !0), this.__extmap))
+};
+doll.client.lib.types.Cube.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
+  return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$ISeqable$_seq$arity$1 = function() {
+  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'yscale", this.yscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale)], !0), this.__extmap))
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IPrintable$_pr_seq$arity$2 = function(a, b) {
+  return cljs.core.pr_sequential.call(null, function(a) {
+    return cljs.core.pr_sequential.call(null, cljs.core.pr_seq, "", " ", "", b, a)
+  }, [cljs.core.str("#"), cljs.core.str("doll.client.lib.types.Cube"), cljs.core.str("{")].join(""), ", ", "}", b, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'yscale", this.yscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale)], !0), this.__extmap))
+};
+doll.client.lib.types.Cube.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return 3 + cljs.core.count.call(null, this.__extmap)
+};
+doll.client.lib.types.Cube.prototype.doll$client$lib$protocols$Shape$ = !0;
+doll.client.lib.types.Cube.prototype.doll$client$lib$protocols$Shape$draw$arity$1 = function() {
+  return new THREE.CubeGeometry(this.xscale, this.yscale, this.zscale)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(a, b) {
+  return cljs.core.truth_(function() {
+    if(cljs.core.truth_(b)) {
+      var c = a.constructor === b.constructor;
+      return c ? cljs.core.equiv_map.call(null, a, b) : c
+    }
+    return b
+  }()) ? !0 : !1
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+  return new doll.client.lib.types.Cube(this.xscale, this.yscale, this.zscale, b, this.__extmap, this.__hash)
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+  return this.__meta
+};
+doll.client.lib.types.Cube.prototype.cljs$core$IMap$_dissoc$arity$2 = function(a, b) {
+  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'zscale", "\ufdd0'xscale", "\ufdd0'yscale"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new doll.client.lib.types.Cube(this.xscale, this.yscale, this.zscale, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
+};
+doll.client.lib.types.Cube.cljs$lang$type = !0;
+doll.client.lib.types.Cube.cljs$lang$ctorPrSeq = function() {
+  return cljs.core.list.call(null, "doll.client.lib.types/Cube")
+};
+doll.client.lib.types.Cube.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "doll.client.lib.types/Cube")
+};
+doll.client.lib.types.__GT_Cube = function(a, b, c) {
+  return new doll.client.lib.types.Cube(a, b, c)
+};
+doll.client.lib.types.map__GT_Cube = function(a) {
+  return new doll.client.lib.types.Cube((new cljs.core.Keyword("\ufdd0'xscale")).call(null, a), (new cljs.core.Keyword("\ufdd0'yscale")).call(null, a), (new cljs.core.Keyword("\ufdd0'zscale")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'xscale", "\ufdd0'yscale", "\ufdd0'zscale"))
+};
+doll.client.lib.types.Plane = function(a, b, c, d, e, f) {
+  this.xscale = a;
+  this.zscale = b;
+  this.xsegments = c;
+  this.zsegments = d;
+  this.__meta = e;
+  this.__extmap = f;
+  this.cljs$lang$protocol_mask$partition1$ = 0;
+  this.cljs$lang$protocol_mask$partition0$ = 2766538506;
+  4 < arguments.length ? (this.__meta = e, this.__extmap = f) : this.__extmap = this.__meta = null
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IHash$_hash$arity$1 = function(a) {
+  var b = this.__hash;
+  return null != b ? b : this.__hash = a = cljs.core.hash_imap.call(null, a)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$ILookup$_lookup$arity$2 = function(a, b) {
+  return a.cljs$core$ILookup$_lookup$arity$3(a, b, null)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$ILookup$_lookup$arity$3 = function(a, b, c) {
+  return"\ufdd0'xscale" === b ? this.xscale : "\ufdd0'zscale" === b ? this.zscale : "\ufdd0'xsegments" === b ? this.xsegments : "\ufdd0'zsegments" === b ? this.zsegments : cljs.core._lookup.call(null, this.__extmap, b, c)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IAssociative$_assoc$arity$3 = function(a, b, c) {
+  a = cljs.core.identical_QMARK_;
+  return a.call(null, "\ufdd0'xscale", b) ? new doll.client.lib.types.Plane(c, this.zscale, this.xsegments, this.zsegments, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'zscale", b) ? new doll.client.lib.types.Plane(this.xscale, c, this.xsegments, this.zsegments, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'xsegments", b) ? new doll.client.lib.types.Plane(this.xscale, this.zscale, c, this.zsegments, this.__meta, this.__extmap, null) : a.call(null, "\ufdd0'zsegments", b) ? new doll.client.lib.types.Plane(this.xscale, 
+  this.zscale, this.xsegments, c, this.__meta, this.__extmap, null) : new doll.client.lib.types.Plane(this.xscale, this.zscale, this.xsegments, this.zsegments, this.__meta, cljs.core.assoc.call(null, this.__extmap, b, c), null)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IPrintWithWriter$_pr_writer$arity$3 = function(a, b, c) {
+  return cljs.core.pr_sequential_writer.call(null, b, function(a) {
+    return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
+  }, [cljs.core.str("#"), cljs.core.str("Plane"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale), cljs.core.vector.call(null, "\ufdd0'xsegments", this.xsegments), cljs.core.vector.call(null, "\ufdd0'zsegments", this.zsegments)], !0), this.__extmap))
+};
+doll.client.lib.types.Plane.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
+  return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$ISeqable$_seq$arity$1 = function() {
+  return cljs.core.seq.call(null, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale), cljs.core.vector.call(null, "\ufdd0'xsegments", this.xsegments), cljs.core.vector.call(null, "\ufdd0'zsegments", this.zsegments)], !0), this.__extmap))
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IPrintable$_pr_seq$arity$2 = function(a, b) {
+  return cljs.core.pr_sequential.call(null, function(a) {
+    return cljs.core.pr_sequential.call(null, cljs.core.pr_seq, "", " ", "", b, a)
+  }, [cljs.core.str("#"), cljs.core.str("doll.client.lib.types.Plane"), cljs.core.str("{")].join(""), ", ", "}", b, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'xscale", this.xscale), cljs.core.vector.call(null, "\ufdd0'zscale", this.zscale), cljs.core.vector.call(null, "\ufdd0'xsegments", this.xsegments), cljs.core.vector.call(null, "\ufdd0'zsegments", this.zsegments)], !0), this.__extmap))
+};
+doll.client.lib.types.Plane.prototype.cljs$core$ICounted$_count$arity$1 = function() {
+  return 4 + cljs.core.count.call(null, this.__extmap)
+};
+doll.client.lib.types.Plane.prototype.doll$client$lib$protocols$Shape$ = !0;
+doll.client.lib.types.Plane.prototype.doll$client$lib$protocols$Shape$draw$arity$1 = function() {
+  return new THREE.PlaneGeometry(this.xscale, this.zscale, this.xsegments, this.zsegments)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IEquiv$_equiv$arity$2 = function(a, b) {
+  return cljs.core.truth_(function() {
+    if(cljs.core.truth_(b)) {
+      var c = a.constructor === b.constructor;
+      return c ? cljs.core.equiv_map.call(null, a, b) : c
+    }
+    return b
+  }()) ? !0 : !1
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(a, b) {
+  return new doll.client.lib.types.Plane(this.xscale, this.zscale, this.xsegments, this.zsegments, b, this.__extmap, this.__hash)
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IMeta$_meta$arity$1 = function() {
+  return this.__meta
+};
+doll.client.lib.types.Plane.prototype.cljs$core$IMap$_dissoc$arity$2 = function(a, b) {
+  return cljs.core.contains_QMARK_.call(null, cljs.core.PersistentHashSet.fromArray(["\ufdd0'xsegments", "\ufdd0'zscale", "\ufdd0'xscale", "\ufdd0'zsegments"]), b) ? cljs.core.dissoc.call(null, cljs.core.with_meta.call(null, cljs.core.into.call(null, cljs.core.ObjMap.EMPTY, a), this.__meta), b) : new doll.client.lib.types.Plane(this.xscale, this.zscale, this.xsegments, this.zsegments, this.__meta, cljs.core.not_empty.call(null, cljs.core.dissoc.call(null, this.__extmap, b)), null)
+};
+doll.client.lib.types.Plane.cljs$lang$type = !0;
+doll.client.lib.types.Plane.cljs$lang$ctorPrSeq = function() {
+  return cljs.core.list.call(null, "doll.client.lib.types/Plane")
+};
+doll.client.lib.types.Plane.cljs$lang$ctorPrWriter = function(a, b) {
+  return cljs.core._write.call(null, b, "doll.client.lib.types/Plane")
+};
+doll.client.lib.types.__GT_Plane = function(a, b, c, d) {
+  return new doll.client.lib.types.Plane(a, b, c, d)
+};
+doll.client.lib.types.map__GT_Plane = function(a) {
+  return new doll.client.lib.types.Plane((new cljs.core.Keyword("\ufdd0'xscale")).call(null, a), (new cljs.core.Keyword("\ufdd0'zscale")).call(null, a), (new cljs.core.Keyword("\ufdd0'xsegments")).call(null, a), (new cljs.core.Keyword("\ufdd0'zsegments")).call(null, a), null, cljs.core.dissoc.call(null, a, "\ufdd0'xscale", "\ufdd0'zscale", "\ufdd0'xsegments", "\ufdd0'zsegments"))
 };
 var jayq = {util:{}};
 jayq.util.map__GT_js = function(a) {
@@ -13424,11 +13641,12 @@ doll.client.main.document_ready = function(a) {
   return jayq.core.$.call(null, document).ready(a)
 };
 doll.client.main.key_codes = cljs.core.ObjMap.fromObject(["\ufdd0'a", "\ufdd0'w", "\ufdd0's", "\ufdd0'd"], {"\ufdd0'a":65, "\ufdd0'w":87, "\ufdd0's":83, "\ufdd0'd":68});
-doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":1E3, "\ufdd0'yscale":10, "\ufdd0'zscale":1E3, "\ufdd0'xpos":0, "\ufdd0'ypos":0, "\ufdd0'zpos":0, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":50, 
-"\ufdd0'zscale":200, "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-500, "\ufdd0'color":16711680}), cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":200, "\ufdd0'zscale":200, "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-700, "\ufdd0'color":255})], !0);
+doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, "\ufdd0'ypos":100, "\ufdd0'zpos":0, "\ufdd0'color":56797}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, 
+"\ufdd0'ypos":100, "\ufdd0'zpos":-50, "\ufdd0'color":14540032}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, "\ufdd0'ypos":100, "\ufdd0'zpos":-100, "\ufdd0'color":4491281}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 50, 200), "\ufdd0'xpos":200, 
+"\ufdd0'ypos":0, "\ufdd0'zpos":-500, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 200, 200), "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-700, "\ufdd0'color":221})], !0);
 doll.client.main.render = function(a, b) {
-  var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'zpos", null), f = cljs.core._lookup.call(null, c, "\ufdd0'ypos", null), g = cljs.core._lookup.call(null, c, "\ufdd0'xpos", null), h = cljs.core._lookup.call(null, c, "\ufdd0'zscale", null), i = cljs.core._lookup.call(null, c, "\ufdd0'yscale", null), c = cljs.core._lookup.call(null, c, "\ufdd0'xscale", 
-  null), h = new THREE.CubeGeometry(c, i, h), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'color", "\ufdd0'wireframe"], {"\ufdd0'color":d, "\ufdd0'wireframe":!0}))), d = new THREE.Mesh(h, d);
+  var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'zpos", null), f = cljs.core._lookup.call(null, c, "\ufdd0'ypos", null), g = cljs.core._lookup.call(null, c, "\ufdd0'xpos", null), c = cljs.core._lookup.call(null, c, "\ufdd0'shape", null), c = doll.client.lib.protocols.draw.call(null, c), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, 
+  cljs.core.ObjMap.fromObject(["\ufdd0'color", "\ufdd0'wireframe"], {"\ufdd0'color":d, "\ufdd0'wireframe":!0}))), d = new THREE.Mesh(c, d);
   d.position = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":g, "\ufdd0'y":f, "\ufdd0'z":e}));
   doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'scene").add(d);
   return d
@@ -13437,10 +13655,10 @@ doll.client.main.make_scenery = function(a, b) {
   return cljs.core.doall.call(null, cljs.core.map.call(null, cljs.core.partial.call(null, doll.client.main.render, a), b))
 };
 doll.client.main.scene_setup = function(a) {
-  var b = cljs.core._lookup.call(null, a, "\ufdd0'$el", null);
+  var b = (new cljs.core.Keyword("\ufdd0'$el")).call(null, a);
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'camera", new THREE.PerspectiveCamera(45, b.width() / b.height(), 1, 1E4));
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'scene", new THREE.Scene);
-  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'controls", new THREE.TrackballControls(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"), cljs.core._lookup.call(null, a, "\ufdd0'$el", null).get(0)));
+  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'controls", new THREE.TrackballControls(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"), (new cljs.core.Keyword("\ufdd0'$el")).call(null, a).get(0)));
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'renderer", new THREE.CanvasRenderer(jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'canvas"], {"\ufdd0'canvas":b.get(0)}))));
   doll.client.main.make_scenery.call(null, a, doll.client.main.test_shapes);
   doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'controls").target.set(0, 0, -1);
@@ -13451,11 +13669,14 @@ doll.client.main.scene_setup = function(a) {
   return a
 };
 doll.client.main.character_setup = function(a) {
-  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.ObjMap.fromObject("\ufdd0'xscale,\ufdd0'yscale,\ufdd0'zscale,\ufdd0'xpos,\ufdd0'ypos,\ufdd0'zpos,\ufdd0'color".split(","), {"\ufdd0'xscale":200, "\ufdd0'yscale":400, "\ufdd0'zscale":200, "\ufdd0'xpos":0, "\ufdd0'ypos":100, "\ufdd0'zpos":1E3, "\ufdd0'color":56797})));
-  doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character").add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
-  jayq.core.on.call(null, cljs.core._lookup.call(null, a, "\ufdd0'$el", null), "\ufdd0'keydown", function(a) {
+  doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400], !0));
+  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200), "\ufdd0'xpos":0, "\ufdd0'ypos":200, "\ufdd0'zpos":400})));
+  var b = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character");
+  doll.client.main.chr = b;
+  b.add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
+  jayq.core.on.call(null, (new cljs.core.Keyword("\ufdd0'$el")).call(null, a), "\ufdd0'keydown", function(a) {
     a = a.which;
-    return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? console.log("a") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? console.log("w") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? console.log("s") : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? console.log("d") : null
+    return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? b.rotation.y = 0.1 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? b.position.z = -10 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? b.position.z = 10 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? b.rotation.y = -0.1 : null
   });
   return a
 };
@@ -13467,6 +13688,7 @@ doll.client.main.animate = function animate(b) {
   doll.client.lib.protocols.get_field.call(null, b, "\ufdd0'controls").update();
   return c.render(e, d)
 };
+doll.client.main.view = new doll.client.lib.types.View(jayq.core.$.call(null, "\ufdd0'.mainCanvas"), new doll.client.lib.types.Model(cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY)), cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY));
 doll.client.main.document_ready.call(null, function() {
-  return doll.client.main.animate.call(null, doll.client.main.character_setup.call(null, doll.client.main.scene_setup.call(null, new doll.client.lib.types.View(jayq.core.$.call(null, "\ufdd0'.mainCanvas"), cljs.core.atom.call(null, cljs.core.ObjMap.EMPTY)))))
+  return doll.client.main.animate.call(null, doll.client.main.character_setup.call(null, doll.client.main.scene_setup.call(null, doll.client.main.view)))
 });

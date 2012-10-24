@@ -1,6 +1,11 @@
 (ns doll.client.main
-  (:use [doll.client.lib.types :only [View Model]]
-        [doll.client.lib.protocols :only [get-field set-field]]
+  (:use [doll.client.lib.types :only [View Model Cube Plane]]
+        [doll.client.lib.protocols :only [get-field 
+                                          get-fields 
+                                          set-field 
+                                          set-fields 
+                                          update-field 
+                                          draw]]
         [jayq.core :only [$ on]]
         [jayq.util :only [map->js]]))
 
@@ -11,9 +16,11 @@
 (def key-codes {:a 65 :w 87 :s 83 :d 68})
 
 (def test-shapes
-  [{:xscale 1000 :yscale 10 :zscale 1000 :xpos 0 :ypos 0 :zpos 0 :color 0xdd00dd}
-   {:xscale 200 :yscale 50 :zscale 200 :xpos 200 :ypos 0 :zpos -500 :color 0xff0000}
-   {:xscale 200 :yscale 200 :zscale 200 :xpos 200 :ypos 0 :zpos -700 :color 0x0000ff}])
+  [{:shape (Plane. 100 100 2 2) :xpos -100 :ypos 100 :zpos 0 :color 0x00dddd}
+   {:shape (Plane. 100 100 2 2) :xpos -100 :ypos 100 :zpos -50 :color 0xdddd00}
+   {:shape (Plane. 100 100 2 2) :xpos -100 :ypos 100 :zpos -100 :color 0x448811}
+   {:shape (Cube. 200 50 200) :xpos 200 :ypos 0 :zpos -500 :color 0xdd00dd}
+   {:shape (Cube. 200 200 200) :xpos 200 :ypos 0 :zpos -700 :color 0x0000dd}])
 
 ;(defn move-camera-dimension [view dimension value]
 ;  (aset (aget (get-field view :camera) "position") dimension value))
@@ -24,8 +31,8 @@
 ;  (when-let [z (dimensions :z)] (move-camera-dimension view "z" z))
 ;  view) 
 
-(defn render [view {:keys [xscale yscale zscale xpos ypos zpos color]}]
-  (let [geometry (js/THREE.CubeGeometry. xscale yscale zscale)
+(defn render [view {:keys [shape xpos ypos zpos color]}]
+  (let [geometry (draw shape)
         material (js/THREE.MeshLambertMaterial. (map->js {:color color :wireframe true}))]
     (let [mesh (js/THREE.Mesh. geometry material)]
       (aset mesh "position" (map->js {:x xpos :y ypos :z zpos}))
@@ -36,10 +43,10 @@
   (doall (map (partial render view) object-maps)))
 
 (defn scene-setup [view]
-  (let [$canvas (get view :$el)]
+  (let [$canvas (:$el view)]
     (set-field view :camera (js/THREE.PerspectiveCamera. 45 (/ (.width $canvas) (.height $canvas)) 1 10000))
     (set-field view :scene (js/THREE.Scene.))  
-    (set-field view :controls (js/THREE.TrackballControls. (get-field view :camera) (.get (get view :$el) 0)))
+    (set-field view :controls (js/THREE.TrackballControls. (get-field view :camera) (.get (:$el view) 0)))
     (set-field view :renderer (js/THREE.CanvasRenderer. (map->js {:canvas (.get $canvas 0)})))
 
     ;(move-camera view {:z 100}) 
@@ -51,16 +58,18 @@
   view)
 
 (defn character-setup [view]
-  (set-field view :character (render view {:xscale 200 :yscale 400 :zscale 200 :xpos 0 :ypos 100 :zpos 1000 :color 0x00dddd}))
+  (set-fields (:model view) [:x 0 :y 200 :z 400])
+  (set-field view :character (render view {:shape (Cube. 200 400 200) :xpos 0 :ypos 200 :zpos 400}))
   (let [character (get-field view :character)]
+    (def chr character)
     (.add character (get-field view :camera))
-    (on (get view :$el) :keydown (fn [event] 
+    (on (:$el view) :keydown (fn [event] 
                                    (let [which (aget event "which")]
                                      (cond
-                                       (= which (key-codes :a)) (.log js/console "a")
-                                       (= which (key-codes :w)) (.log js/console "w")
-                                       (= which (key-codes :s)) (.log js/console "s")
-                                       (= which (key-codes :d)) (.log js/console "d")))))) 
+                                       (= which (key-codes :a)) (aset (aget character "rotation") "y" 0.1)
+                                       (= which (key-codes :w)) (aset (aget character "position") "z" -10)
+                                       (= which (key-codes :s)) (aset (aget character "position") "z" 10)
+                                       (= which (key-codes :d)) (aset (aget character "rotation") "y" -0.1)))))) 
   view)
 
 (defn animate [view]
@@ -71,8 +80,12 @@
     (.update (get-field view :controls))
     (.render renderer scene camera)))
 
-(document-ready #(-> 
-                   (View. ($ :.mainCanvas) (atom {}))
+(def view (View. ($ :.mainCanvas) 
+                 (Model. (atom {}))
+                 (atom {})))
+
+
+(document-ready #(-> view
                    scene-setup
                    character-setup
                    animate))
