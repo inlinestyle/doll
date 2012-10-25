@@ -49,6 +49,17 @@
     (.mouseenter $canvas #(.focus $canvas)))
   view)
 
+(defn update-position-fields [model x-function z-function]
+  (let [old-x (get-field model :x)
+        old-z (get-field model :z)]
+    (set-fields model [:x (x-function old-x) :z (z-function old-z)])))
+
+(defn update-position [model +or-]
+  (let [yrot (get-field model :yrot)]
+    (let [x-delta (* 5 (Math/sin yrot))
+          z-delta (* 5 (Math/cos yrot))]
+      (update-position-fields model #(+or- % x-delta) #(+or- % z-delta)))))
+
 (defn character-setup [view]
   (set-fields (:model view) [:x 0 :y 200 :z 400 :yrot 0])
   (set-field view :character (render view (merge {:shape (Cube. 200 400 200)} (get-fields (:model view) [:x :y :z]))))
@@ -63,8 +74,8 @@
                                    (let [which (aget event "which")]
                                      (cond
                                        (= which (key-codes :a)) (update-field model :yrot #(+ % 0.1))
-                                       (= which (key-codes :w)) (update-field model :z #(- % 5))
-                                       (= which (key-codes :s)) (update-field model :z #(+ % 5))
+                                       (= which (key-codes :w)) (update-position model -)
+                                       (= which (key-codes :s)) (update-position model +)
                                        (= which (key-codes :d)) (update-field model :yrot #(- % 0.1)))))))
   view)
 

@@ -13700,6 +13700,18 @@ doll.client.main.scene_setup = function(a) {
   });
   return a
 };
+doll.client.main.update_position_fields = function(a, b, c) {
+  var d = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'x"), e = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'z");
+  return doll.client.lib.protocols.set_fields.call(null, a, cljs.core.PersistentVector.fromArray(["\ufdd0'x", b.call(null, d), "\ufdd0'z", c.call(null, e)], !0))
+};
+doll.client.main.update_position = function(a, b) {
+  var c = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'yrot"), d = 5 * Math.sin.call(null, c), e = 5 * Math.cos.call(null, c);
+  return doll.client.main.update_position_fields.call(null, a, function(a) {
+    return b.call(null, a, d)
+  }, function(a) {
+    return b.call(null, a, e)
+  })
+};
 doll.client.main.character_setup = function(a) {
   doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400, "\ufdd0'yrot", 0], !0));
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'shape"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200)}), doll.client.lib.protocols.get_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)))));
@@ -13713,11 +13725,7 @@ doll.client.main.character_setup = function(a) {
     a = a.which;
     return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'yrot", function(a) {
       return a + 0.1
-    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'z", function(a) {
-      return a - 5
-    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'z", function(a) {
-      return a + 5
-    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'yrot", function(a) {
+    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? doll.client.main.update_position.call(null, d, cljs.core._) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? doll.client.main.update_position.call(null, d, cljs.core._PLUS_) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'yrot", function(a) {
       return a - 0.1
     }) : null
   });

@@ -2,23 +2,23 @@ goog.provide('doll.client.lib.protocols');
 goog.require('cljs.core');
 doll.client.lib.protocols.State = {};
 doll.client.lib.protocols.set_field = (function set_field(self,field,value){
-if((function (){var and__3822__auto____44134 = self;
-if(and__3822__auto____44134)
+if((function (){var and__3822__auto____172998 = self;
+if(and__3822__auto____172998)
 {return self.doll$client$lib$protocols$State$set_field$arity$3;
 } else
-{return and__3822__auto____44134;
+{return and__3822__auto____172998;
 }
 })())
 {return self.doll$client$lib$protocols$State$set_field$arity$3(self,field,value);
 } else
-{var x__2387__auto____44135 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44136 = (doll.client.lib.protocols.set_field[goog.typeOf(x__2387__auto____44135)]);
-if(or__3824__auto____44136)
-{return or__3824__auto____44136;
+{var x__2387__auto____172999 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173000 = (doll.client.lib.protocols.set_field[goog.typeOf(x__2387__auto____172999)]);
+if(or__3824__auto____173000)
+{return or__3824__auto____173000;
 } else
-{var or__3824__auto____44137 = (doll.client.lib.protocols.set_field["_"]);
-if(or__3824__auto____44137)
-{return or__3824__auto____44137;
+{var or__3824__auto____173001 = (doll.client.lib.protocols.set_field["_"]);
+if(or__3824__auto____173001)
+{return or__3824__auto____173001;
 } else
 {throw cljs.core.missing_protocol.call(null,"State.set-field",self);
 }
@@ -27,23 +27,23 @@ if(or__3824__auto____44137)
 }
 });
 doll.client.lib.protocols.set_fields = (function set_fields(self,fvs){
-if((function (){var and__3822__auto____44142 = self;
-if(and__3822__auto____44142)
+if((function (){var and__3822__auto____173006 = self;
+if(and__3822__auto____173006)
 {return self.doll$client$lib$protocols$State$set_fields$arity$2;
 } else
-{return and__3822__auto____44142;
+{return and__3822__auto____173006;
 }
 })())
 {return self.doll$client$lib$protocols$State$set_fields$arity$2(self,fvs);
 } else
-{var x__2387__auto____44143 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44144 = (doll.client.lib.protocols.set_fields[goog.typeOf(x__2387__auto____44143)]);
-if(or__3824__auto____44144)
-{return or__3824__auto____44144;
+{var x__2387__auto____173007 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173008 = (doll.client.lib.protocols.set_fields[goog.typeOf(x__2387__auto____173007)]);
+if(or__3824__auto____173008)
+{return or__3824__auto____173008;
 } else
-{var or__3824__auto____44145 = (doll.client.lib.protocols.set_fields["_"]);
-if(or__3824__auto____44145)
-{return or__3824__auto____44145;
+{var or__3824__auto____173009 = (doll.client.lib.protocols.set_fields["_"]);
+if(or__3824__auto____173009)
+{return or__3824__auto____173009;
 } else
 {throw cljs.core.missing_protocol.call(null,"State.set-fields",self);
 }
@@ -52,23 +52,23 @@ if(or__3824__auto____44145)
 }
 });
 doll.client.lib.protocols.get_field = (function get_field(self,field){
-if((function (){var and__3822__auto____44150 = self;
-if(and__3822__auto____44150)
+if((function (){var and__3822__auto____173014 = self;
+if(and__3822__auto____173014)
 {return self.doll$client$lib$protocols$State$get_field$arity$2;
 } else
-{return and__3822__auto____44150;
+{return and__3822__auto____173014;
 }
 })())
 {return self.doll$client$lib$protocols$State$get_field$arity$2(self,field);
 } else
-{var x__2387__auto____44151 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44152 = (doll.client.lib.protocols.get_field[goog.typeOf(x__2387__auto____44151)]);
-if(or__3824__auto____44152)
-{return or__3824__auto____44152;
+{var x__2387__auto____173015 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173016 = (doll.client.lib.protocols.get_field[goog.typeOf(x__2387__auto____173015)]);
+if(or__3824__auto____173016)
+{return or__3824__auto____173016;
 } else
-{var or__3824__auto____44153 = (doll.client.lib.protocols.get_field["_"]);
-if(or__3824__auto____44153)
-{return or__3824__auto____44153;
+{var or__3824__auto____173017 = (doll.client.lib.protocols.get_field["_"]);
+if(or__3824__auto____173017)
+{return or__3824__auto____173017;
 } else
 {throw cljs.core.missing_protocol.call(null,"State.get-field",self);
 }
@@ -77,23 +77,23 @@ if(or__3824__auto____44153)
 }
 });
 doll.client.lib.protocols.get_fields = (function get_fields(self,fields){
-if((function (){var and__3822__auto____44158 = self;
-if(and__3822__auto____44158)
+if((function (){var and__3822__auto____173022 = self;
+if(and__3822__auto____173022)
 {return self.doll$client$lib$protocols$State$get_fields$arity$2;
 } else
-{return and__3822__auto____44158;
+{return and__3822__auto____173022;
 }
 })())
 {return self.doll$client$lib$protocols$State$get_fields$arity$2(self,fields);
 } else
-{var x__2387__auto____44159 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44160 = (doll.client.lib.protocols.get_fields[goog.typeOf(x__2387__auto____44159)]);
-if(or__3824__auto____44160)
-{return or__3824__auto____44160;
+{var x__2387__auto____173023 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173024 = (doll.client.lib.protocols.get_fields[goog.typeOf(x__2387__auto____173023)]);
+if(or__3824__auto____173024)
+{return or__3824__auto____173024;
 } else
-{var or__3824__auto____44161 = (doll.client.lib.protocols.get_fields["_"]);
-if(or__3824__auto____44161)
-{return or__3824__auto____44161;
+{var or__3824__auto____173025 = (doll.client.lib.protocols.get_fields["_"]);
+if(or__3824__auto____173025)
+{return or__3824__auto____173025;
 } else
 {throw cljs.core.missing_protocol.call(null,"State.get-fields",self);
 }
@@ -102,23 +102,23 @@ if(or__3824__auto____44161)
 }
 });
 doll.client.lib.protocols.update_field = (function update_field(self,field,function$){
-if((function (){var and__3822__auto____44166 = self;
-if(and__3822__auto____44166)
+if((function (){var and__3822__auto____173030 = self;
+if(and__3822__auto____173030)
 {return self.doll$client$lib$protocols$State$update_field$arity$3;
 } else
-{return and__3822__auto____44166;
+{return and__3822__auto____173030;
 }
 })())
 {return self.doll$client$lib$protocols$State$update_field$arity$3(self,field,function$);
 } else
-{var x__2387__auto____44167 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44168 = (doll.client.lib.protocols.update_field[goog.typeOf(x__2387__auto____44167)]);
-if(or__3824__auto____44168)
-{return or__3824__auto____44168;
+{var x__2387__auto____173031 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173032 = (doll.client.lib.protocols.update_field[goog.typeOf(x__2387__auto____173031)]);
+if(or__3824__auto____173032)
+{return or__3824__auto____173032;
 } else
-{var or__3824__auto____44169 = (doll.client.lib.protocols.update_field["_"]);
-if(or__3824__auto____44169)
-{return or__3824__auto____44169;
+{var or__3824__auto____173033 = (doll.client.lib.protocols.update_field["_"]);
+if(or__3824__auto____173033)
+{return or__3824__auto____173033;
 } else
 {throw cljs.core.missing_protocol.call(null,"State.update-field",self);
 }
@@ -128,23 +128,23 @@ if(or__3824__auto____44169)
 });
 doll.client.lib.protocols.Event = {};
 doll.client.lib.protocols.on = (function on(self,watch_id,should_react_QMARK_,reaction){
-if((function (){var and__3822__auto____44174 = self;
-if(and__3822__auto____44174)
+if((function (){var and__3822__auto____173038 = self;
+if(and__3822__auto____173038)
 {return self.doll$client$lib$protocols$Event$on$arity$4;
 } else
-{return and__3822__auto____44174;
+{return and__3822__auto____173038;
 }
 })())
 {return self.doll$client$lib$protocols$Event$on$arity$4(self,watch_id,should_react_QMARK_,reaction);
 } else
-{var x__2387__auto____44175 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44176 = (doll.client.lib.protocols.on[goog.typeOf(x__2387__auto____44175)]);
-if(or__3824__auto____44176)
-{return or__3824__auto____44176;
+{var x__2387__auto____173039 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173040 = (doll.client.lib.protocols.on[goog.typeOf(x__2387__auto____173039)]);
+if(or__3824__auto____173040)
+{return or__3824__auto____173040;
 } else
-{var or__3824__auto____44177 = (doll.client.lib.protocols.on["_"]);
-if(or__3824__auto____44177)
-{return or__3824__auto____44177;
+{var or__3824__auto____173041 = (doll.client.lib.protocols.on["_"]);
+if(or__3824__auto____173041)
+{return or__3824__auto____173041;
 } else
 {throw cljs.core.missing_protocol.call(null,"Event.on",self);
 }
@@ -153,23 +153,23 @@ if(or__3824__auto____44177)
 }
 });
 doll.client.lib.protocols.off = (function off(self,watch_id){
-if((function (){var and__3822__auto____44182 = self;
-if(and__3822__auto____44182)
+if((function (){var and__3822__auto____173046 = self;
+if(and__3822__auto____173046)
 {return self.doll$client$lib$protocols$Event$off$arity$2;
 } else
-{return and__3822__auto____44182;
+{return and__3822__auto____173046;
 }
 })())
 {return self.doll$client$lib$protocols$Event$off$arity$2(self,watch_id);
 } else
-{var x__2387__auto____44183 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44184 = (doll.client.lib.protocols.off[goog.typeOf(x__2387__auto____44183)]);
-if(or__3824__auto____44184)
-{return or__3824__auto____44184;
+{var x__2387__auto____173047 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173048 = (doll.client.lib.protocols.off[goog.typeOf(x__2387__auto____173047)]);
+if(or__3824__auto____173048)
+{return or__3824__auto____173048;
 } else
-{var or__3824__auto____44185 = (doll.client.lib.protocols.off["_"]);
-if(or__3824__auto____44185)
-{return or__3824__auto____44185;
+{var or__3824__auto____173049 = (doll.client.lib.protocols.off["_"]);
+if(or__3824__auto____173049)
+{return or__3824__auto____173049;
 } else
 {throw cljs.core.missing_protocol.call(null,"Event.off",self);
 }
@@ -179,23 +179,23 @@ if(or__3824__auto____44185)
 });
 doll.client.lib.protocols.Shape = {};
 doll.client.lib.protocols.draw = (function draw(self){
-if((function (){var and__3822__auto____44190 = self;
-if(and__3822__auto____44190)
+if((function (){var and__3822__auto____173054 = self;
+if(and__3822__auto____173054)
 {return self.doll$client$lib$protocols$Shape$draw$arity$1;
 } else
-{return and__3822__auto____44190;
+{return and__3822__auto____173054;
 }
 })())
 {return self.doll$client$lib$protocols$Shape$draw$arity$1(self);
 } else
-{var x__2387__auto____44191 = (((self == null))?null:self);
-return (function (){var or__3824__auto____44192 = (doll.client.lib.protocols.draw[goog.typeOf(x__2387__auto____44191)]);
-if(or__3824__auto____44192)
-{return or__3824__auto____44192;
+{var x__2387__auto____173055 = (((self == null))?null:self);
+return (function (){var or__3824__auto____173056 = (doll.client.lib.protocols.draw[goog.typeOf(x__2387__auto____173055)]);
+if(or__3824__auto____173056)
+{return or__3824__auto____173056;
 } else
-{var or__3824__auto____44193 = (doll.client.lib.protocols.draw["_"]);
-if(or__3824__auto____44193)
-{return or__3824__auto____44193;
+{var or__3824__auto____173057 = (doll.client.lib.protocols.draw["_"]);
+if(or__3824__auto____173057)
+{return or__3824__auto____173057;
 } else
 {throw cljs.core.missing_protocol.call(null,"Shape.draw",self);
 }
