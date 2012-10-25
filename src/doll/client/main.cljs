@@ -20,11 +20,6 @@
   (concat
     (map (fn [zpos] {:shape (Cube. 200 200 200) :x 200 :y 0 :z (* 250 zpos) :color 0xdd00dd}) (range -20 20))
     (map (fn [xpos] {:shape (Plane. 100 100 2 2) :x (* 250 xpos) :y 0 :z 0 :color 0x00dddd}) (range -20 20))))
-;[{:shape (Plane. 100 100 2 2) :x -100 :y 100 :z 0 :color 0x00dddd}
-; {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -50 :color 0xdddd00}
-; {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -100 :color 0x448811}
-          ; {:shape (Cube. 200 50 200) :x 200 :y 0 :z -500 :color 0xdd00dd}
-          ; {:shape (Cube. 200 200 200) :x 200 :y 0 :z -700 :color 0x0000dd}]))
 
 (defn render [view {:keys [shape x y z color]}]
   (let [geometry (draw shape)
