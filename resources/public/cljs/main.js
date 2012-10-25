@@ -376,15 +376,6 @@ goog.base = function(a, b, c) {
 goog.scope = function(a) {
   a.call(goog.global)
 };
-goog.debug = {};
-goog.debug.Error = function(a) {
-  this.stack = Error().stack || "";
-  if(a) {
-    this.message = "" + a
-  }
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.string = {};
 goog.string.Unicode = {NBSP:"\u00a0"};
 goog.string.startsWith = function(a, b) {
@@ -710,6 +701,15 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(a) {
   return goog.string.toSelectorCaseCache_[a] || (goog.string.toSelectorCaseCache_[a] = ("" + a).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
+goog.debug = {};
+goog.debug.Error = function(a) {
+  this.stack = Error().stack || "";
+  if(a) {
+    this.message = "" + a
+  }
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.asserts = {};
 goog.asserts.ENABLE_ASSERTS = goog.DEBUG;
 goog.asserts.AssertionError = function(a, b) {
@@ -13714,12 +13714,17 @@ doll.client.main.update_position = function(a, b) {
 };
 doll.client.main.character_setup = function(a) {
   doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400, "\ufdd0'yrot", 0], !0));
+  jayq.core.ajax.call(null, "/character/id", cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"GET"})).done(function(b) {
+    console.log(b);
+    return doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.flatten.call(null, cljs.core.vec.call(null, cljs.core.js__GT_clj.call(null, b, "\ufdd0'keywordize-keys", !0))))
+  });
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'shape"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200)}), doll.client.lib.protocols.get_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)))));
   var b = (new cljs.core.Keyword("\ufdd0'$el")).call(null, a), c = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character"), d = (new cljs.core.Keyword("\ufdd0'model")).call(null, a);
   c.add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
   doll.client.lib.protocols.on.call(null, d, "\ufdd0'any-change", cljs.core.not_EQ_, function(a) {
     c.position = jayq.util.map__GT_js.call(null, cljs.core.select_keys.call(null, a, cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)));
-    return c.rotation = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":0, "\ufdd0'y":a.call(null, "\ufdd0'yrot"), "\ufdd0'z":0}))
+    c.rotation = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":0, "\ufdd0'y":a.call(null, "\ufdd0'yrot"), "\ufdd0'z":0}));
+    return jayq.core.ajax.call(null, "/character/id", cljs.core.ObjMap.fromObject(["\ufdd0'type", "\ufdd0'data"], {"\ufdd0'type":"POST", "\ufdd0'data":a}))
   });
   jayq.core.on.call(null, b, "\ufdd0'keydown", function(a) {
     a = a.which;

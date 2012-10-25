@@ -62,6 +62,10 @@
 
 (defn character-setup [view]
   (set-fields (:model view) [:x 0 :y 200 :z 400 :yrot 0])
+  (let [deferred (jayq/ajax "/character/id" {:type "GET"})]
+    (.done deferred (fn [data] 
+                      (.log js/console data)
+                      (set-fields (:model view) (flatten (vec (js->clj data :keywordize-keys true)))))))
   (set-field view :character (render view (merge {:shape (Cube. 200 400 200)} (get-fields (:model view) [:x :y :z]))))
   (let [$canvas (:$el view)
         character (get-field view :character)
@@ -69,7 +73,8 @@
     (.add character (get-field view :camera))
     (on model :any-change not= (fn [fieldmap] 
                                  (aset character "position" (map->js (select-keys fieldmap [:x :y :z])))
-                                 (aset character "rotation" (map->js {:x 0 :y (fieldmap :yrot) :z 0}))))
+                                 (aset character "rotation" (map->js {:x 0 :y (fieldmap :yrot) :z 0}))
+                                 (jayq/ajax "/character/id" {:type "POST" :data fieldmap})))
     (jayq/on $canvas :keydown (fn [event] 
                                    (let [which (aget event "which")]
                                      (cond
