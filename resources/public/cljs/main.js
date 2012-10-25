@@ -13712,11 +13712,18 @@ doll.client.main.update_position = function(a, b) {
     return b.call(null, a, e)
   })
 };
+doll.client.main.format_data = function(a) {
+  a = cljs.core.js__GT_clj.call(null, a, "\ufdd0'keywordize-keys", !0);
+  return cljs.core.flatten.call(null, cljs.core.vec.call(null, cljs.core.merge_with.call(null, function(a, c) {
+    return parseFloat(c)
+  }, a, cljs.core.select_keys.call(null, a, cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'yrot"], !0)))))
+};
 doll.client.main.character_setup = function(a) {
   doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400, "\ufdd0'yrot", 0], !0));
   jayq.core.ajax.call(null, "/character/id", cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"GET"})).done(function(b) {
     console.log(b);
-    return doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.flatten.call(null, cljs.core.vec.call(null, cljs.core.js__GT_clj.call(null, b, "\ufdd0'keywordize-keys", !0))))
+    console.log(doll.client.main.format_data.call(null, b));
+    return doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), doll.client.main.format_data.call(null, b))
   });
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'shape"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200)}), doll.client.lib.protocols.get_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)))));
   var b = (new cljs.core.Keyword("\ufdd0'$el")).call(null, a), c = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character"), d = (new cljs.core.Keyword("\ufdd0'model")).call(null, a);

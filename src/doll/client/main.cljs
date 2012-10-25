@@ -60,12 +60,19 @@
           z-delta (* 5 (Math/cos yrot))]
       (update-position-fields model #(+or- % x-delta) #(+or- % z-delta)))))
 
+(defn format-data [data]
+  (let [clj-data (js->clj data :keywordize-keys true)]
+    (flatten 
+      (vec 
+        (merge-with #(js/parseFloat %2) clj-data (select-keys clj-data [:x :y :z :yrot]))))))
+
 (defn character-setup [view]
   (set-fields (:model view) [:x 0 :y 200 :z 400 :yrot 0])
   (let [deferred (jayq/ajax "/character/id" {:type "GET"})]
-    (.done deferred (fn [data] 
+    (.done deferred (fn [data]
                       (.log js/console data)
-                      (set-fields (:model view) (flatten (vec (js->clj data :keywordize-keys true)))))))
+                      (.log js/console (format-data data))
+                      (set-fields (:model view) (format-data data))))) 
   (set-field view :character (render view (merge {:shape (Cube. 200 400 200)} (get-fields (:model view) [:x :y :z]))))
   (let [$canvas (:$el view)
         character (get-field view :character)

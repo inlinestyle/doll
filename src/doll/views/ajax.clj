@@ -8,5 +8,6 @@
          (response/json (session/get :client)))
 
 (defpage [:post ["/character/:id" :id #"[\w]+"]] {:keys [id x y z yrot]}
-         (session/put! :client {:id id :x x :y y :z z :yrot yrot})
-         (session/get :client))
+         (if (or x y z yrot)
+           (session/put! :client {:id id :x x :y y :z z :yrot yrot}))
+         (response/empty))
