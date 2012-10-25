@@ -17,11 +17,14 @@
 (def key-codes {:a 65 :w 87 :s 83 :d 68})
 
 (def test-shapes
-  [{:shape (Plane. 100 100 2 2) :x -100 :y 100 :z 0 :color 0x00dddd}
-   {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -50 :color 0xdddd00}
-   {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -100 :color 0x448811}
-   {:shape (Cube. 200 50 200) :x 200 :y 0 :z -500 :color 0xdd00dd}
-   {:shape (Cube. 200 200 200) :x 200 :y 0 :z -700 :color 0x0000dd}])
+  (concat
+    (map (fn [zpos] {:shape (Cube. 200 200 200) :x 200 :y 0 :z (* 250 zpos) :color 0xdd00dd}) (range -20 20))
+    (map (fn [xpos] {:shape (Plane. 100 100 2 2) :x (* 250 xpos) :y 0 :z 0 :color 0x00dddd}) (range -20 20))))
+;[{:shape (Plane. 100 100 2 2) :x -100 :y 100 :z 0 :color 0x00dddd}
+; {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -50 :color 0xdddd00}
+; {:shape (Plane. 100 100 2 2) :x -100 :y 100 :z -100 :color 0x448811}
+          ; {:shape (Cube. 200 50 200) :x 200 :y 0 :z -500 :color 0xdd00dd}
+          ; {:shape (Cube. 200 200 200) :x 200 :y 0 :z -700 :color 0x0000dd}]))
 
 (defn render [view {:keys [shape x y z color]}]
   (let [geometry (draw shape)
@@ -41,7 +44,6 @@
     (set-field view :controls (js/THREE.TrackballControls. (get-field view :camera) (.get (:$el view) 0)))
     (set-field view :renderer (js/THREE.CanvasRenderer. (map->js {:canvas (.get $canvas 0)})))
 
-    ;(move-camera view {:z 100}) 
     (make-scenery view test-shapes)
     (.set (aget (get-field view :controls) "target") 0 0 -1)
 
@@ -70,8 +72,6 @@
   (set-fields (:model view) [:x 0 :y 200 :z 400 :yrot 0])
   (let [deferred (jayq/ajax "/character/id" {:type "GET"})]
     (.done deferred (fn [data]
-                      (.log js/console data)
-                      (.log js/console (format-data data))
                       (set-fields (:model view) (format-data data))))) 
   (set-field view :character (render view (merge {:shape (Cube. 200 400 200)} (get-fields (:model view) [:x :y :z]))))
   (let [$canvas (:$el view)

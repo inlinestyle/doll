@@ -13673,9 +13673,11 @@ doll.client.main.document_ready = function(a) {
   return jayq.core.$.call(null, document).ready(a)
 };
 doll.client.main.key_codes = cljs.core.ObjMap.fromObject(["\ufdd0'a", "\ufdd0'w", "\ufdd0's", "\ufdd0'd"], {"\ufdd0'a":65, "\ufdd0'w":87, "\ufdd0's":83, "\ufdd0'd":68});
-doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":0, "\ufdd0'color":56797}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":-50, 
-"\ufdd0'color":14540032}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":-100, "\ufdd0'color":4491281}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 50, 200), "\ufdd0'x":200, "\ufdd0'y":0, "\ufdd0'z":-500, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", 
-"\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 200, 200), "\ufdd0'x":200, "\ufdd0'y":0, "\ufdd0'z":-700, "\ufdd0'color":221})], !0);
+doll.client.main.test_shapes = cljs.core.concat.call(null, cljs.core.map.call(null, function(a) {
+  return cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 200, 200), "\ufdd0'x":200, "\ufdd0'y":0, "\ufdd0'z":250 * a, "\ufdd0'color":14483677})
+}, cljs.core.range.call(null, -20, 20)), cljs.core.map.call(null, function(a) {
+  return cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":250 * a, "\ufdd0'y":0, "\ufdd0'z":0, "\ufdd0'color":56797})
+}, cljs.core.range.call(null, -20, 20)));
 doll.client.main.render = function(a, b) {
   var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'z", null), f = cljs.core._lookup.call(null, c, "\ufdd0'y", null), g = cljs.core._lookup.call(null, c, "\ufdd0'x", null), c = cljs.core._lookup.call(null, c, "\ufdd0'shape", null), c = doll.client.lib.protocols.draw.call(null, c), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, 
   cljs.core.ObjMap.fromObject(["\ufdd0'color", "\ufdd0'wireframe"], {"\ufdd0'color":d, "\ufdd0'wireframe":!0}))), d = new THREE.Mesh(c, d);
@@ -13721,8 +13723,6 @@ doll.client.main.format_data = function(a) {
 doll.client.main.character_setup = function(a) {
   doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400, "\ufdd0'yrot", 0], !0));
   jayq.core.ajax.call(null, "/character/id", cljs.core.ObjMap.fromObject(["\ufdd0'type"], {"\ufdd0'type":"GET"})).done(function(b) {
-    console.log(b);
-    console.log(doll.client.main.format_data.call(null, b));
     return doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), doll.client.main.format_data.call(null, b))
   });
   doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'shape"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200)}), doll.client.lib.protocols.get_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)))));
