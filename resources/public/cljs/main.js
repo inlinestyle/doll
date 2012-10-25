@@ -12682,6 +12682,29 @@ doll.client.lib.protocols.update_field = function(a, b, c) {
   }
   return d.call(null, a, b, c)
 };
+doll.client.lib.protocols.Event = {};
+doll.client.lib.protocols.on = function(a, b, c, d) {
+  if(a ? a.doll$client$lib$protocols$Event$on$arity$4 : a) {
+    return a.doll$client$lib$protocols$Event$on$arity$4(a, b, c, d)
+  }
+  var e;
+  e = doll.client.lib.protocols.on[goog.typeOf(null == a ? null : a)];
+  if(!e && (e = doll.client.lib.protocols.on._, !e)) {
+    throw cljs.core.missing_protocol.call(null, "Event.on", a);
+  }
+  return e.call(null, a, b, c, d)
+};
+doll.client.lib.protocols.off = function(a, b) {
+  if(a ? a.doll$client$lib$protocols$Event$off$arity$2 : a) {
+    return a.doll$client$lib$protocols$Event$off$arity$2(a, b)
+  }
+  var c;
+  c = doll.client.lib.protocols.off[goog.typeOf(null == a ? null : a)];
+  if(!c && (c = doll.client.lib.protocols.off._, !c)) {
+    throw cljs.core.missing_protocol.call(null, "Event.off", a);
+  }
+  return c.call(null, a, b)
+};
 doll.client.lib.protocols.Shape = {};
 doll.client.lib.protocols.draw = function(a) {
   if(a ? a.doll$client$lib$protocols$Shape$draw$arity$1 : a) {
@@ -12738,6 +12761,15 @@ doll.client.lib.types.Model.prototype.cljs$core$IPrintWithWriter$_pr_writer$arit
   return cljs.core.pr_sequential_writer.call(null, b, function(a) {
     return cljs.core.pr_sequential_writer.call(null, b, cljs.core.pr_writer, "", " ", "", c, a)
   }, [cljs.core.str("#"), cljs.core.str("Model"), cljs.core.str("{")].join(""), ", ", "}", c, cljs.core.concat.call(null, cljs.core.PersistentVector.fromArray([cljs.core.vector.call(null, "\ufdd0'field-atom", this.field_atom)], !0), this.__extmap))
+};
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$Event$ = !0;
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$Event$on$arity$4 = function(a, b, c, d) {
+  return cljs.core.add_watch.call(null, this.field_atom, b, function(a, b, g, h) {
+    return cljs.core.truth_(c.call(null, g, h)) ? d.call(null, h) : null
+  })
+};
+doll.client.lib.types.Model.prototype.doll$client$lib$protocols$Event$off$arity$2 = function(a, b) {
+  return cljs.core.remove_watch.call(null, this.field_atom, b)
 };
 doll.client.lib.types.Model.prototype.cljs$core$ICollection$_conj$arity$2 = function(a, b) {
   return cljs.core.vector_QMARK_.call(null, b) ? a.cljs$core$IAssociative$_assoc$arity$3(a, cljs.core._nth.call(null, b, 0), cljs.core._nth.call(null, b, 1)) : cljs.core.reduce.call(null, cljs.core._conj, a, b)
@@ -13641,11 +13673,11 @@ doll.client.main.document_ready = function(a) {
   return jayq.core.$.call(null, document).ready(a)
 };
 doll.client.main.key_codes = cljs.core.ObjMap.fromObject(["\ufdd0'a", "\ufdd0'w", "\ufdd0's", "\ufdd0'd"], {"\ufdd0'a":65, "\ufdd0'w":87, "\ufdd0's":83, "\ufdd0'd":68});
-doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, "\ufdd0'ypos":100, "\ufdd0'zpos":0, "\ufdd0'color":56797}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, 
-"\ufdd0'ypos":100, "\ufdd0'zpos":-50, "\ufdd0'color":14540032}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'xpos":-100, "\ufdd0'ypos":100, "\ufdd0'zpos":-100, "\ufdd0'color":4491281}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 50, 200), "\ufdd0'xpos":200, 
-"\ufdd0'ypos":0, "\ufdd0'zpos":-500, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 200, 200), "\ufdd0'xpos":200, "\ufdd0'ypos":0, "\ufdd0'zpos":-700, "\ufdd0'color":221})], !0);
+doll.client.main.test_shapes = cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":0, "\ufdd0'color":56797}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":-50, 
+"\ufdd0'color":14540032}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Plane(100, 100, 2, 2), "\ufdd0'x":-100, "\ufdd0'y":100, "\ufdd0'z":-100, "\ufdd0'color":4491281}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 50, 200), "\ufdd0'x":200, "\ufdd0'y":0, "\ufdd0'z":-500, "\ufdd0'color":14483677}), cljs.core.ObjMap.fromObject(["\ufdd0'shape", 
+"\ufdd0'x", "\ufdd0'y", "\ufdd0'z", "\ufdd0'color"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 200, 200), "\ufdd0'x":200, "\ufdd0'y":0, "\ufdd0'z":-700, "\ufdd0'color":221})], !0);
 doll.client.main.render = function(a, b) {
-  var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'zpos", null), f = cljs.core._lookup.call(null, c, "\ufdd0'ypos", null), g = cljs.core._lookup.call(null, c, "\ufdd0'xpos", null), c = cljs.core._lookup.call(null, c, "\ufdd0'shape", null), c = doll.client.lib.protocols.draw.call(null, c), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, 
+  var c = cljs.core.seq_QMARK_.call(null, b) ? cljs.core.apply.call(null, cljs.core.hash_map, b) : b, d = cljs.core._lookup.call(null, c, "\ufdd0'color", null), e = cljs.core._lookup.call(null, c, "\ufdd0'z", null), f = cljs.core._lookup.call(null, c, "\ufdd0'y", null), g = cljs.core._lookup.call(null, c, "\ufdd0'x", null), c = cljs.core._lookup.call(null, c, "\ufdd0'shape", null), c = doll.client.lib.protocols.draw.call(null, c), d = new THREE.MeshLambertMaterial(jayq.util.map__GT_js.call(null, 
   cljs.core.ObjMap.fromObject(["\ufdd0'color", "\ufdd0'wireframe"], {"\ufdd0'color":d, "\ufdd0'wireframe":!0}))), d = new THREE.Mesh(c, d);
   d.position = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":g, "\ufdd0'y":f, "\ufdd0'z":e}));
   doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'scene").add(d);
@@ -13669,14 +13701,25 @@ doll.client.main.scene_setup = function(a) {
   return a
 };
 doll.client.main.character_setup = function(a) {
-  doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400], !0));
-  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.ObjMap.fromObject(["\ufdd0'shape", "\ufdd0'xpos", "\ufdd0'ypos", "\ufdd0'zpos"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200), "\ufdd0'xpos":0, "\ufdd0'ypos":200, "\ufdd0'zpos":400})));
-  var b = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character");
-  doll.client.main.chr = b;
-  b.add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
-  jayq.core.on.call(null, (new cljs.core.Keyword("\ufdd0'$el")).call(null, a), "\ufdd0'keydown", function(a) {
+  doll.client.lib.protocols.set_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", 0, "\ufdd0'y", 200, "\ufdd0'z", 400, "\ufdd0'yrot", 0], !0));
+  doll.client.lib.protocols.set_field.call(null, a, "\ufdd0'character", doll.client.main.render.call(null, a, cljs.core.merge.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'shape"], {"\ufdd0'shape":new doll.client.lib.types.Cube(200, 400, 200)}), doll.client.lib.protocols.get_fields.call(null, (new cljs.core.Keyword("\ufdd0'model")).call(null, a), cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)))));
+  var b = (new cljs.core.Keyword("\ufdd0'$el")).call(null, a), c = doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'character"), d = (new cljs.core.Keyword("\ufdd0'model")).call(null, a);
+  c.add(doll.client.lib.protocols.get_field.call(null, a, "\ufdd0'camera"));
+  doll.client.lib.protocols.on.call(null, d, "\ufdd0'any-change", cljs.core.not_EQ_, function(a) {
+    c.position = jayq.util.map__GT_js.call(null, cljs.core.select_keys.call(null, a, cljs.core.PersistentVector.fromArray(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], !0)));
+    return c.rotation = jayq.util.map__GT_js.call(null, cljs.core.ObjMap.fromObject(["\ufdd0'x", "\ufdd0'y", "\ufdd0'z"], {"\ufdd0'x":0, "\ufdd0'y":a.call(null, "\ufdd0'yrot"), "\ufdd0'z":0}))
+  });
+  jayq.core.on.call(null, b, "\ufdd0'keydown", function(a) {
     a = a.which;
-    return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? b.rotation.y = 0.1 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? b.position.z = -10 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? b.position.z = 10 : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? b.rotation.y = -0.1 : null
+    return cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'a")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'yrot", function(a) {
+      return a + 0.1
+    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'w")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'z", function(a) {
+      return a - 5
+    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0's")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'z", function(a) {
+      return a + 5
+    }) : cljs.core._EQ_.call(null, a, doll.client.main.key_codes.call(null, "\ufdd0'd")) ? doll.client.lib.protocols.update_field.call(null, d, "\ufdd0'yrot", function(a) {
+      return a - 0.1
+    }) : null
   });
   return a
 };

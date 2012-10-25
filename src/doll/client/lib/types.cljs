@@ -1,5 +1,5 @@
 (ns doll.client.lib.types
-  (:use [doll.client.lib.protocols :only [State Shape]]))
+  (:use [doll.client.lib.protocols :only [State Event Shape]]))
 
 (defrecord Model [field-atom]
   State
@@ -12,7 +12,12 @@
   (get-fields [self fields]
     (select-keys @field-atom fields))
   (update-field [self field function]
-    (swap! field-atom update-in [field] function)))
+    (swap! field-atom update-in [field] function))
+  Event
+  (on [self watch-id should-react? reaction]
+    (add-watch field-atom watch-id #(if (should-react? %3 %4) (reaction %4))))
+  (off [self watch-id]
+    (remove-watch field-atom watch-id)))
 
 (defrecord View [$el model options-atom]
   State

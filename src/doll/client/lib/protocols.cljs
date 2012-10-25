@@ -7,5 +7,9 @@
   (get-fields [self fields])
   (update-field [self field function]))
 
+(defprotocol Event
+  (on [self watch-id should-react? reaction])
+  (off [self watch-id]))
+
 (defprotocol Shape
   (draw [self]))
